@@ -1,0 +1,47 @@
+<hr>
+<p>title: Cypher<br>cover: cover.png<br>categories:</p>
+<ul>
+<li><ul>
+<li>HackTheBox</li>
+<li>Vice<br>hidden: true<br>password: ^%ThhGG@214$^%*78jhgfdf<br>abbrlink: 47b6ee29<br>date: 2025-03-02 21:30:33<br>tags:</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>{% note purple ‘fas fa-bullhorn’ %}<br>📌 <font color=#bb86fc size=3 face=" "><strong>Overview</strong></font>:</p>
+<table>
+<thead>
+<tr>
+<th align="center">📑 <strong>Release Date</strong></th>
+<th align="center">📑 <strong>Retire Date</strong></th>
+<th align="center">📖 <strong>Rated Difficulty</strong></th>
+<th align="center">⚡️ <strong>Operating System</strong></th>
+<th align="center">⚡️ <strong>Created by</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">15 Feb 2025</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"><a href="https://app.hackthebox.com/users/63374">ruycr4ft</a></td>
+</tr>
+</tbody></table>
+<p>⚔️ Accessing the room at <a href="https://app.hackthebox.com/machines/650">https://app.hackthebox.com/machines/650</a></p>
+<p>{% endnote %}</p>
+<h1 id="Challenge-brief"><a href="#Challenge-brief" class="headerlink" title="Challenge brief"></a><strong>Challenge brief</strong></h1><p>This box’s</p>
+<hr>
+<h1 id="Walkthrough-solutions"><a href="#Walkthrough-solutions" class="headerlink" title="Walkthrough &amp; solutions"></a><strong>Walkthrough &amp; solutions</strong></h1><h2 id="Recon"><a href="#Recon" class="headerlink" title="Recon"></a>Recon</h2><p>With nmap, we have:</p>
+<pre><code class="language-shell">Nmap scan report for cypher.htb (10.10.11.57)
+Host is up (0.25s latency).
+Not shown: 998 closed tcp ports (conn-refused)
+PORT   STATE SERVICE VERSION
+22/tcp open  ssh     OpenSSH 9.6p1 Ubuntu 3ubuntu13.8 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   256 be:68:db:82:8e:63:32:45:54:46:b7:08:7b:3b:52:b0 (ECDSA)
+|_  256 e5:5b:34:f5:54:43:93:f8:7e:b6:69:4c:ac:d6:3d:23 (ED25519)
+80/tcp open  http    nginx 1.24.0 (Ubuntu)
+|_http-title: GRAPH ASM
+|_http-server-header: nginx/1.24.0 (Ubuntu)
+No exact OS matches for host (If you know what OS is running on it, see https://nmap.org/submit/ ).
+</code></pre>

@@ -1,0 +1,341 @@
+<!DOCTYPE html><html lang="en" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Cypher | 胡蝶 しのぶ</title><meta name="author" content="胡蝶 しのぶ"><meta name="copyright" content="胡蝶 しのぶ"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#020305"><meta name="description" content="Here&#39;s something encrypted, password is required to continue reading.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Cypher">
+<meta property="og:url" content="https://haehansa.github.io/posts/47b6ee29/index.html">
+<meta property="og:site_name" content="胡蝶 しのぶ">
+<meta property="og:description" content="Here&#39;s something encrypted, password is required to continue reading.">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://haehansa.github.io/posts/47b6ee29/cover.png">
+<meta property="article:published_time" content="2025-03-02T14:30:33.000Z">
+<meta property="article:modified_time" content="2025-03-05T14:59:45.501Z">
+<meta property="article:author" content="胡蝶 しのぶ">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://haehansa.github.io/posts/47b6ee29/cover.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Cypher",
+  "url": "https://haehansa.github.io/posts/47b6ee29/",
+  "image": "https://haehansa.github.io/posts/47b6ee29/cover.png",
+  "datePublished": "2025-03-02T14:30:33.000Z",
+  "dateModified": "2025-03-05T14:59:45.501Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "胡蝶 しのぶ",
+      "url": "https://haehansa.github.io/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/imgs/sktir29228-saa.png"><link rel="canonical" href="https://haehansa.github.io/posts/47b6ee29/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!true && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#020305')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f6eff5')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          const mediaQueryDark = window.matchMedia('(prefers-color-scheme: dark)')
+          const mediaQueryLight = window.matchMedia('(prefers-color-scheme: light)')
+          
+          if (theme === undefined) {
+            if (mediaQueryLight.matches) activateLightMode()
+            else if (mediaQueryDark.matches) activateDarkMode()
+            else {
+              const hour = new Date().getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            mediaQueryDark.addEventListener('change', () => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else {
+            theme === 'light' ? activateLightMode() : activateDarkMode()
+          }
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&amp;family=Grandstander:ital,wght@0,100..900;1,100..900&amp;family=Oswald:wght@200..700&amp;family=Roboto:ital,wght@0,100..900;1,100..900&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"No results found for: ${query}","hits_stats":"${hits} articles found"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":190,"highlightFullpage":true,"highlightMacStyle":true},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: {"limitCount":150,"languages":{"author":"Author: 胡蝶 しのぶ","link":"Link: ","source":"Source: 胡蝶 しのぶ","info":"Copyright belongs to the author. For commercial use, please contact the author for authorization. For non-commercial use, please indicate the source."}},
+  lightbox: 'medium_zoom',
+  Snackbar: {"chs_to_cht":"You have switched to Traditional Chinese","cht_to_chs":"You have switched to Simplified Chinese","day_to_night":"You have switched to Dark Mode","night_to_day":"You have switched to Light Mode","bgLight":"#bb86fc","bgDark":"#bb86fc","position":"bottom-center"},
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: true,
+  islazyloadPlugin: false,
+  isAnchor: true,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Cypher',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"><link rel="stylesheet" href="/css/custom.css"><link rel="stylesheet" href="/css/custom/custom.css"><link rel="stylesheet" href="/css/custom/dracula.css"><canvas id="bubble_canvas" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:999999;pointer-events:none"></canvas><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css"><meta name="generator" content="Hexo 7.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">Loading...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load', preloader.endLoading)
+
+  if (true) {
+    btf.addGlobalFn('pjaxSend', preloader.initLoading, 'preloader_init')
+    btf.addGlobalFn('pjaxComplete', preloader.endLoading, 'preloader_end')
+  }
+})()</script><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/imgs/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 家</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> について</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/posts/47b6ee29/cover.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"></a><a class="nav-page-title" href="/"><span class="site-name">Cypher</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 検索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 家</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> について</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">Cypher</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2025-03-02T14:30:33.000Z" title="Created 2025-03-02 21:30:33">2025-03-02</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2025-03-05T14:59:45.501Z" title="Updated 2025-03-05 21:59:45">2025-03-05</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/HackTheBox/">HackTheBox</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/HackTheBox/Vice/">Vice</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">Word Count:</span><span class="word-count">6</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">Reading Time:</span><span>1mins</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><header id="page-header" style="background-image: url(/posts/47b6ee29/cover.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 検索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 家</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> について</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">Cypher</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2025-03-02T14:30:33.000Z" title="Created 2025-03-02 21:30:33">2025-03-02</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2025-03-05T14:59:45.501Z" title="Updated 2025-03-05 21:59:45">2025-03-05</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/HackTheBox/">HackTheBox</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/HackTheBox/Vice/">Vice</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">Word Count:</span><span class="word-count">6</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">Reading Time:</span><span>1mins</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><div id="post-outdate-notice" data="{&quot;limitDay&quot;:14,&quot;messagePrev&quot;:&quot;It has been&quot;,&quot;messageNext&quot;:&quot;days since the last update, the content of the article may be outdated.&quot;,&quot;postUpdate&quot;:&quot;2025-03-05 21:59:45&quot;}" hidden></div><div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="ae055e223c2d5d6a111e29ef9f058bfdecf1e49c3c9da65f8271fb7a59432a6b">b78494d6ba868c2e34b87b1ac802faf230aa22c241d30626983fba467578a08f39a8a947a1d1e7c6b32938805074c4ee79eb4a65e7a1086947826d25f26a1d6568e541aad6bcdeafe3023f16e41111e99fa20e716d81cc9fc6376bc723980e76d6a2dcff1081967fed4eb7da8afb964bb61a4699d13f10bb571ba24db9341a1714ae81e2d87d9b137d051f089be404a1ca190bd3897fc99638076a322df3a94cc1237f713bb89480504888071470a10894484bde68b1627f0f8cc32796245c05d2e8baa07ed338fc4967c8ac1d3f53d9cc2cbd6e61292a54c7a60fd53d8bf3d6e9e983e768a0ada47ecf9aad0fbdce73e45a8c0f8bb1d7107111095a81d14c7500c31edfe003c01ed346c5da5eb4e9bb8afa59ae4c84f3d4e787316047efa9540995b1efc91f884e56f88861d493ecad75ede4a6168abfeebf924826171c5a86823a41c0ba2506e8d8d1e913c3b89b70ee0fe592eff91a2f5a22fe00ad7bffbe8ac4f499d898443ff4612a45f87b06954aa60517b7817fbefe1ca99f76382415728a82f679fe2a83d26cc91b90002abc6124adcefff7f7b21a7d9c0c4ff470784b1038e1cec1eb7d10461f71113e74e5192660088441bd61f89c7f45618a26296419a65fc62042ad30ae488549cc789497cc50697291498e10863fbcc9f76b4fa313ca214654a544c022f1b234b63917cd8086e88bf5a6dc23e305b97ad1a5f6929781d341736f413cbabefa23cdd9468a52e40c57da3265b3e9726665ad7957d463f7422717a48892dceb83b4219584cefdb8744db74b5479392853f6a8f3115ad931785bdf19a7d099b8cea2eb4e61e073a3b870383b3c5feb045a268f3984152f0a5c752741deba939b2e64cd0082c31c345e1d858f0d8fc63b82e65e41019565072cd49ecb5f680b9a86f806cf5311856516f50c58102c8d0cb640c9f3849f548e07d0ad58b6841df12f0632f382752acc36e7b8c43120c04a5133c50c969ad8799c4b3e45185c0b6456886afb34f30973264ac20aca6cdbfab7df81a122bda4e6554296aec18b3ae658d1f6406dab2ea5c7701b09724df87e99ccbf038fb78400533647877ffe2513c668d1e7c94831fe6adf7e0a49892fbfc2432d9562944110de442804175f552a78395d26f19ae2cf01218780c62bfa7a3005e174334331a5d06ac15299d560637b90be36640651d685566c069bd8bfd5820cdeec74037a73237ba5a1eeb374d86acf2fdf5c44c657a20b9ccaa8259c77627a7ece8c9d97008b4f13750a27b1db1888a0c6fc3dd8ebca87740ab74f52c5add8d3270766992f3fb7a63aa875b03902d151526a29215c4128b896952cd627567531808d32c5a2ed9d651f217e577de6c57dc3e2feb852c9f44164618cd891b729cca3d9f90be9c89eba75f9fb85a5624f233df90195ff6a2ff3643ad26fc7ae2e1e279ba493697d7cdb5fd2642910535ba775190404595e7061f42d78caf7271f77b57ace7190a8e7d3e516a68a89cf8c6c19bfc0f46e5ab186a7c69790415a8a1da1ee5d3c3847a6d3f0ff91660cfa25626ac51f428b5a01c39a5a5f1c4cb909ebcf2c83336a6886b984d1b1d42ea32d822daa6af814f792ee24f7ecb33dcc936509512f63987a524687fa6315f72acd17b7b8d70d4fc0a338c25bbd8f8a39d4a1b690263d89c17e6c31e67368412cb5bd5559c6baa5717fd1682121d2448be5674a6727dda3dcd7339a6204f10769e5757fa557e85e524ec654bca78a8dbaa63f68409fd33108b835b447b2bfda75e38416b842204a609f14d3520dfa3b15c6422e840a236696fc3f6efd76d6ca4022b39a04879a3ec4eb980598b290e1cf5940650c817f6fc25e6ef808d91bc9be94bf603c42208ecffca5c13fd2f83f0ddb01050c109c99a2602fe54388beb4febe07390aae39472be034b07ebd0b7897a3c39a63e15801ab804e09738d415d56a2b52cb08e771fce01bb60e12c8e291642d87d8eda9953c7199aae51cf8121fe65d1e24b05f08cc5500634000c86b2e3562aa3b558576d69b84eeb2f73914263d71a2e97f3e899e126e82f455285ae2812d546cd4c8fee996dd3f84d7ee0a78ac960f53bef4d040abae20bf077ea90179c0fe87f5b59065a753b3f88380c7ea84c7a994608d20a4837e0915af78a17c64e3c3ab5ae57c6f49b1dddf8e2b9a40cd4db6e7a79c77df1a664745459b814f90d532c9be68f9ba97ed84263193387d5f36c4fa53167154ed66646c8ed8804bd4b3df22c6ae4ec6c522f6779eb3a9811b0443c85c9f1a4bf34f7302bfa01f8c14d17041424a6a337a78a032edafc83ec45082c84b3d87bd3980032c4cf8ff4520f003f271729d18fbbe91dd97e66d11c69eb027d293d54df5e0774e23500fb26cb3b871dee58e4a4673fb84afe255821a9862a1b707435402aa77adc9fbbbb41c5caa942e06592903ce5bfbdbf11384a00464862f20c1c4e617b390d0ee3edb43e2f5a06cb38618810a5a8d8c80b33791d40698613770f45c5e98feae83c4c2458a8fc750533b8ca9e8332e78051ddebce2e8dc38b33b28c2b978487c763ea1f4bb0852760a3dae4da39b7504eb1c58fda0e6d7e485221c6c100e89d1a5caf973f4d65950cc510c88c871299abf0014af072d92190870386ac03dcebaa0c74e4d8d08b61a0224f87b3e189d9e97a4152d0c043f4552e2a5dc0f4bf7e59dd58c05b11922fcedb5a60c68529741d9a49431cb41318e024da28d98ea03dded6cbabf5c130735aeeed84def4f96e2d09af5a57f5ab4102789c292dfaa2243ecde8beeecd1fa3c60023f074ef9fd5506b5eb8f4e2632d435f42e59e04ac711448bae38292c5c4567086a881a89669e18cc668a40dc1bde3facce0ecb79e3f9e45ac46925a9d832defa15429df0dfdf35c52b627f8fda363e8c230944d50ebb5bcf7e317a372aa75d8cc323368cca6cd9b60cfc7ec4de9dd0e7babdd03bfda889b58591278f52c6d0626c024da0edb6c498bdbcccd01c6c5758d0249d3d54b7f68c2e7c2541b4d5bd85241fc40ed16ea7e1674d5ccf173d238b49134e77216c76390b60da53968b4aca323b6ad41908481ed0496e027beecaef95bd08b6a02fe6bf44d07d9a96250f2609ad9c7ce60e3713ce88065aeccb3cd788e0c324bddba297b5ad60f3a4f9a23520f8e06a284634a8ff9330a15b9f79622b382acf5fa762e7d6ad28869afaed2e4da13ed8bb5aa3d2fb14ac93d91e82a5867ff9a3761bdb1dd32150d1f2a68b681ef5fc6f3698fc432a72d01c30ef018482a63e5d1fe8c0d96324616daa54f4a4c129547ec5386f8e1e1d308193e70ce9d252ab5a997ea84b7374fdd24effef72d42435d877a103c793a5d3df2606ee2783c0703b822bba53ca5f89b89cfc9645939514d1001b65b02f2ad64245995972914d6870755621bec173d81759bbf75750af7add8c005464dd1378f3f2068794abdc5e6496020125079eb5029581ca985ba47d340c5dd156a6f6c3d9190f4829c8bf55876adcba2dc8cd75ccdcad7fc4e98c00004090a449ba8b49a5466b1f7587e4d35420eca3c79f7ed56897a1958471213193bd54eefb88f6cea61698b608015c1306a577f03f5b4c8ef64c3578ae4f451a21f217d5cdb2afbf1ade8c69deaedc1231a802eff8c15586e16103502c8f57f0eb5c921042adebe2077ca437a4b0599ebf584d76f89e3c91bc983b8f241c86d203c363ac7076efc0e0d20242caaebaf46bf02f0a71040616de5a59d59883ad46657763f915b25fb1c3ec1c333db90d80985ae891a291e973534bd27647886830da73eb1feef1b60678a74eb252d9326246b115e90a272e6f67c1557b01ce1e6cbad434dece4003018fcc3c8ed924c8d48e5724f4594cda329311e2ad9fb5cadb21fa182cbeec6d315669ef34d110c9bd4551d88404efdd8b75c01e36426fd489f065247b06c5e9bc4cc5bcc9353397018e81b68f2c2792a9f8d69e10f12519a0c26fb171cb5260f329d9c99b614bef132a96269ddf03401bbdc5a91a38a8fb28d6752920ded0c04becfde6de2de1a6cc16480c327214e6a6349d7a8245954af34c0f3c8513eb71411111ed273982f673eeab2d04742d7cd0f8c79439f8615fecf30d6cfd0c3e2d879fd17</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">Hey, password is required here.</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css"></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="https://haehansa.github.io">胡蝶 しのぶ</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="https://haehansa.github.io/posts/47b6ee29/">https://haehansa.github.io/posts/47b6ee29/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles on this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless otherwise stated.</span></div></div><div class="tag_share"></div><nav class="pagination-post" id="pagination"></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/imgs/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">胡蝶 しのぶ</div><div class="author-info-description"></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/haehansa"><i class="fab fa-github"></i><span>でフォローしてください</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>「精巧な殺人の技術」</span></div><div class="announcement_content">「首を切られていないからといって、自分が危害から安全だと思わないでください。私のように剣術に毒を使う者もいます。」</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content toc-div-class" style="display:none"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Challenge-brief"><span class="toc-number">1.</span> <span class="toc-text">Challenge brief</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Walkthrough-solutions"><span class="toc-number">2.</span> <span class="toc-text">Walkthrough &amp; solutions</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Recon"><span class="toc-number">2.1.</span> <span class="toc-text">Recon</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最近の投稿</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/411e9c1c/" title="Adversary Simulation"><img src="/imgs/im.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Adversary Simulation"/></a><div class="content"><a class="title" href="/posts/411e9c1c/" title="Adversary Simulation">Adversary Simulation</a><time datetime="2026-03-18T02:48:10.000Z" title="Created 2026-03-18 09:48:10">2026-03-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/2a6a3ff1/" title="APT &amp; Malware Campaign Breakdown"><img src="/imgs/im.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="APT &amp; Malware Campaign Breakdown"/></a><div class="content"><a class="title" href="/posts/2a6a3ff1/" title="APT &amp; Malware Campaign Breakdown">APT &amp; Malware Campaign Breakdown</a><time datetime="2026-03-15T04:36:45.000Z" title="Created 2026-03-15 11:36:45">2026-03-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/83ba8aef/" title="RAT"><img src="/imgs/im.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="RAT"/></a><div class="content"><a class="title" href="/posts/83ba8aef/" title="RAT">RAT</a><time datetime="2025-05-19T15:27:54.000Z" title="Created 2025-05-19 22:27:54">2025-05-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/870d0507/" title="MITRE | ATT&amp;CK"><img src="/imgs/im.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="MITRE | ATT&amp;CK"/></a><div class="content"><a class="title" href="/posts/870d0507/" title="MITRE | ATT&amp;CK">MITRE | ATT&amp;CK</a><time datetime="2025-05-17T19:29:56.000Z" title="Created 2025-05-18 02:29:56">2025-05-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/1054bcc4/" title="Common Vulnerabilities and Exposures"><img src="/posts/1054bcc4/cve.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Common Vulnerabilities and Exposures"/></a><div class="content"><a class="title" href="/posts/1054bcc4/" title="Common Vulnerabilities and Exposures">Common Vulnerabilities and Exposures</a><time datetime="2025-02-07T22:28:56.000Z" title="Created 2025-02-08 05:28:56">2025-02-08</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2026 By 胡蝶 しのぶ</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a><div>
+<i class="fas fa-heart faa-float animated" style="color:red"></i>
+<span id="timeDate">载入天数...</span>
+<span id="times">载入时分秒...</span></div></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Reading Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><div class="js-pjax"><script>(() => {
+  const runMermaid = ele => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    ele.forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const mermaidThemeConfig = `%%{init:{ 'theme':'${theme}'}}%%\n`
+      const mermaidID = `mermaid-${index}`
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+      const renderMermaid = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      // mermaid v9 and v10 compatibility
+      typeof renderFn === 'string' ? renderMermaid(renderFn) : renderFn.then(({ svg }) => renderMermaid(svg))
+    })
+  }
+
+  const codeToMermaid = () => {
+    const codeMermaidEle = document.querySelectorAll('pre > code.mermaid')
+    if (codeMermaidEle.length === 0) return
+
+    codeMermaidEle.forEach(ele => {
+      const preEle = document.createElement('pre')
+      preEle.className = 'mermaid-src'
+      preEle.hidden = true
+      preEle.textContent = ele.textContent
+      const newEle = document.createElement('div')
+      newEle.className = 'mermaid-wrap'
+      newEle.appendChild(preEle)
+      ele.parentNode.replaceWith(newEle)
+    })
+  }
+
+  const loadMermaid = () => {
+    if (false) codeToMermaid()
+    const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+    if ($mermaid.length === 0) return
+
+    const runMermaidFn = () => runMermaid($mermaid)
+    btf.addGlobalFn('themeChange', runMermaidFn, 'mermaid')
+    window.loadMermaid ? runMermaidFn() : btf.getScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(runMermaidFn)
+  }
+
+  btf.addGlobalFn('encrypt', loadMermaid, 'mermaid')
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script><script>(() => {
+  const abcjsInit = () => {
+    const abcjsFn = () => setTimeout(() => {
+      document.querySelectorAll(".abc-music-sheet").forEach(ele => {
+        if (ele.children.length > 0) return
+        ABCJS.renderAbc(ele, ele.innerHTML, {responsive: 'resize'})
+      })
+    }, 100)
+    
+    typeof ABCJS === 'object' ? abcjsFn()
+      : btf.getScript('https://cdn.jsdelivr.net/npm/abcjs/dist/abcjs-basic-min.min.js').then(abcjsFn)
+  }
+
+  window.pjax ? abcjsInit() : window.addEventListener('load', abcjsInit)
+  btf.addGlobalFn('encrypt', abcjsInit, 'abcjs')
+})()</script></div><script src="/js/custom/DotCursor.js"></script><script src="/js/custom/custom.js"></script><script src="/js/custom/bubble.js"></script><script src="/js/custom/inFootTime.js"></script><script src="/js/custom/music.js"></script><script src="/js/custom/aplayer.js"></script><script src="/js/load-aplayer.js"></script><script src="/js/custom/cursor-effects.js"></script><div class="music-dropdown" onclick="toggleDropdown()"> <i class="fas fa-music"></i><div class="dropdown-content" id="dropdownContent"> <div data-player="japan_collection">心を打つ日本のメロディー</div> <div data-player="another_collection">心に響くメロディー</div> </div> </div><script id="canvas_nest" defer="defer" color="187,134,252" opacity="1" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-nest.min.js"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script>(() => {
+  const destroyAplayer = () => {
+    if (window.aplayers) {
+      for (let i = 0; i < window.aplayers.length; i++) {
+        if (!window.aplayers[i].options.fixed) {
+          window.aplayers[i].destroy()
+        }
+      }
+    }
+  }
+
+  const runMetingJS = () => {
+    typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+  }
+
+  btf.addGlobalFn('pjaxSend', destroyAplayer, 'destroyAplayer')
+  btf.addGlobalFn('pjaxComplete', loadMeting, 'runMetingJS')
+})()</script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>(() => {
+  const pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+  window.pjax = new Pjax({
+    elements: 'a:not([target="_blank"])',
+    selectors: pjaxSelectors,
+    cacheBust: false,
+    analytics: false,
+    scrollRestoration: false
+  })
+
+  const triggerPjaxFn = (val) => {
+    if (!val) return
+    Object.values(val).forEach(fn => fn())
+  }
+
+  document.addEventListener('pjax:send', () => {
+    // removeEventListener
+    btf.removeGlobalFnEvent('pjaxSendOnce')
+    btf.removeGlobalFnEvent('themeChange')
+
+    // reset readmode
+    const $bodyClassList = document.body.classList
+    if ($bodyClassList.contains('read-mode')) $bodyClassList.remove('read-mode')
+
+    triggerPjaxFn(window.globalFn.pjaxSend)
+  })
+
+  document.addEventListener('pjax:complete', () => {
+    btf.removeGlobalFnEvent('pjaxCompleteOnce')
+    document.querySelectorAll('script[data-pjax]').forEach(item => {
+      const newScript = document.createElement('script')
+      const content = item.text || item.textContent || item.innerHTML || ""
+      Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+      newScript.appendChild(document.createTextNode(content))
+      item.parentNode.replaceChild(newScript, item)
+    })
+
+    triggerPjaxFn(window.globalFn.pjaxComplete)
+  })
+
+  document.addEventListener('pjax:error', e => {
+    if (e.request.status === 404) {
+      pjax.loadUrl('/404.html')
+    }
+  })
+})()</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">検索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading Database</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="投稿を検索" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"right","width":150,"height":300,"hOffset":15,"vOffset":-20},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>

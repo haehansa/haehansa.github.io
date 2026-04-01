@@ -1,0 +1,341 @@
+<!DOCTYPE html><html lang="en" data-theme="dark"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>MITRE | ATT&amp;CK | 胡蝶 しのぶ</title><meta name="author" content="胡蝶 しのぶ"><meta name="copyright" content="胡蝶 しのぶ"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#020305"><meta name="description" content="Nothing to show here.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MITRE | ATT&amp;CK">
+<meta property="og:url" content="https://haehansa.github.io/posts/870d0507/index.html">
+<meta property="og:site_name" content="胡蝶 しのぶ">
+<meta property="og:description" content="Nothing to show here.">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://haehansa.github.io/imgs/im.png">
+<meta property="article:published_time" content="2025-05-17T19:29:56.000Z">
+<meta property="article:modified_time" content="2026-03-15T17:25:01.174Z">
+<meta property="article:author" content="胡蝶 しのぶ">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://haehansa.github.io/imgs/im.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "MITRE | ATT&CK",
+  "url": "https://haehansa.github.io/posts/870d0507/",
+  "image": "https://haehansa.github.io/imgs/im.png",
+  "datePublished": "2025-05-17T19:29:56.000Z",
+  "dateModified": "2026-03-15T17:25:01.174Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "胡蝶 しのぶ",
+      "url": "https://haehansa.github.io/"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/imgs/sktir29228-saa.png"><link rel="canonical" href="https://haehansa.github.io/posts/870d0507/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//fonts.googleapis.com" crossorigin=""/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!true && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#020305')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f6eff5')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          const mediaQueryDark = window.matchMedia('(prefers-color-scheme: dark)')
+          const mediaQueryLight = window.matchMedia('(prefers-color-scheme: light)')
+          
+          if (theme === undefined) {
+            if (mediaQueryLight.matches) activateLightMode()
+            else if (mediaQueryDark.matches) activateDarkMode()
+            else {
+              const hour = new Date().getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            mediaQueryDark.addEventListener('change', () => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else {
+            theme === 'light' ? activateLightMode() : activateDarkMode()
+          }
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&amp;family=Grandstander:ital,wght@0,100..900;1,100..900&amp;family=Oswald:wght@200..700&amp;family=Roboto:ital,wght@0,100..900;1,100..900&amp;display=swap" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"top_n_per_article":1,"unescape":false,"languages":{"hits_empty":"No results found for: ${query}","hits_stats":"${hits} articles found"}},
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":190,"highlightFullpage":true,"highlightMacStyle":true},
+  copy: {
+    success: 'Copy Successful',
+    error: 'Copy Failed',
+    noSupport: 'Browser Not Supported'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: 'Just now',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: {"limitCount":150,"languages":{"author":"Author: 胡蝶 しのぶ","link":"Link: ","source":"Source: 胡蝶 しのぶ","info":"Copyright belongs to the author. For commercial use, please contact the author for authorization. For non-commercial use, please indicate the source."}},
+  lightbox: 'medium_zoom',
+  Snackbar: {"chs_to_cht":"You have switched to Traditional Chinese","cht_to_chs":"You have switched to Simplified Chinese","day_to_night":"You have switched to Dark Mode","night_to_day":"You have switched to Light Mode","bgLight":"#bb86fc","bgDark":"#bb86fc","position":"bottom-center"},
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: 'Load More'
+  },
+  isPhotoFigcaption: true,
+  islazyloadPlugin: false,
+  isAnchor: true,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'MITRE | ATT&CK',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"><link rel="stylesheet" href="/css/custom.css"><link rel="stylesheet" href="/css/custom/custom.css"><link rel="stylesheet" href="/css/custom/dracula.css"><canvas id="bubble_canvas" style="position:fixed;top:0;left:0;width:100%;height:100%;z-index:999999;pointer-events:none"></canvas><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10/dist/APlayer.min.css"><meta name="generator" content="Hexo 7.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">Loading...</div></div></div><script>(()=>{
+  const $loadingBox = document.getElementById('loading-box')
+  const $body = document.body
+  const preloader = {
+    endLoading: () => {
+      $body.style.overflow = ''
+      $loadingBox.classList.add('loaded')
+    },
+    initLoading: () => {
+      $body.style.overflow = 'hidden'
+      $loadingBox.classList.remove('loaded')
+    }
+  }
+
+  preloader.initLoading()
+  window.addEventListener('load', preloader.endLoading)
+
+  if (true) {
+    btf.addGlobalFn('pjaxSend', preloader.initLoading, 'preloader_init')
+    btf.addGlobalFn('pjaxComplete', preloader.endLoading, 'preloader_end')
+  }
+})()</script><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/imgs/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 家</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> について</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(/imgs/im.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"></a><a class="nav-page-title" href="/"><span class="site-name">MITRE | ATT&amp;CK</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 検索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 家</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> について</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">MITRE | ATT&amp;CK</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2025-05-17T19:29:56.000Z" title="Created 2025-05-18 02:29:56">2025-05-18</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2026-03-15T17:25:01.174Z" title="Updated 2026-03-16 00:25:01">2026-03-16</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">Word Count:</span><span class="word-count">6</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">Reading Time:</span><span>1mins</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><header id="page-header" style="background-image: url(/imgs/im.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 検索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 家</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> について</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">MITRE | ATT&amp;CK</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2025-05-17T19:29:56.000Z" title="Created 2025-05-18 02:29:56">2025-05-18</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2026-03-15T17:25:01.174Z" title="Updated 2026-03-16 00:25:01">2026-03-16</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">Word Count:</span><span class="word-count">6</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">Reading Time:</span><span>1mins</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post Views:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><div id="post-outdate-notice" data="{&quot;limitDay&quot;:14,&quot;messagePrev&quot;:&quot;It has been&quot;,&quot;messageNext&quot;:&quot;days since the last update, the content of the article may be outdated.&quot;,&quot;postUpdate&quot;:&quot;2026-03-16 00:25:01&quot;}" hidden></div><div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="c81e1af0112f634084943ef44a370ce01948bda9fb5df14e6ad17c07acd10c06">0a232c70681088289f7b87d040b179a50600ac9820ce7ce023d0a8b838e5cf2b4ae84a2edd18bd54ecd63fe089a8b4fcbca6d730b8364b81b1d3c6246186039731dba7f0ab573f69dd6a74504a78b683049d7c8359983e7566df97ef60916ddc9942aa2adfad173926ff4ba6e7c29e38fd10e1bb28e3dcbfe6e1647ccedb44d4d766574dcaea81b0df23e3c7d727adc2eb8339ce2f0d66911f61ccdd1bef85143bd1ffad15e2a23f561adc95c6b6be7e75274e1d65cc10bdea63a7e98cde962056911c4c18bd96b1c2925c8099c76aec821f8ff7d08bec83564ed83eb0e907e25ed027c03c9c76ee80e8e1b20a3e8a06ae5b4c048384294034950551d49e2b1db9cf6b1060ec552e23b6e3b5e819b850a1b51725b0ffd39c0fe556c7b54efb496fd5149919ddf73f30b9ca8aab87a0e90e7cb7f6ac6baffff43628a870d1934f5750ca6876912ab7ef001f292add341fa4fd29f5e1a439f1d5b6fc9db348cf08425f631de669fbaa86aaf0608497956817d2a7d48669e6fa74c2147c579ba1f67458371308566f8b2f005d021df560fbc330d3816b7b369d8fe1f494936814345e8957a1108f177a8409855e7288a427b399cf7ba142a7784150e7b669e14f2f288e15bcb83f8f85602149da877d8b059ce870208e57b38965f87dc942795482a96fc80051ebbf7afce856f7f9fb20181b71bc1208d45ba7b1fb31dc3830361cddc6cf43d65734e021ac49bd82c5d76f8d32bd0be0dd51f9d877272bef7816627af7603c6249c4a512c7e9c57744efff8b8ed9166b4493fed460bec3cd66d6ee69d0079025f71c44e65bf232de520aa6bbc3ead2c788cae99514e0e5819e987e16eecb55f353307b44d451358524385d73114de94022a99e219a8e1854e7677a521b6835a3c0e79ba252db78ff9281d0ae4190fc11afe5a4b3e02fc97551a2e90a2b1a1e26dc949ade7108e5f03bea79f30c44fe90ccafa2259883886a1687fed376a1a7a6b13c5d8e0c3580338705db906621b5bb2f9ebb17d4608339e8c7480b121b7f9234fe299c1d1974925fce55e73c9b29f730019d4c4afa8f5c0b9a05579d8131347b190776500a31e4e830572f17fa96bea95c33704a2bdad73708e82577dfe9a0831963d9d5e89cb578a1f63468f9a822db8c98c9a20f51865036a2e139c5f2a00f912f3e004e325364d6ee9651ea4bf17a96e427a9f3ae8d39d5173eeb2929758b9d536c03525a11f4b6a7968c15372f64f760ef6a77a629880eeb783e535c9a8ab526ee70e870c2bcb722aa7a6d5f14a1bafb78c7ce9ef4ab09ab050edc6fe2b8f8a81e4e677c862e2f6c392fe281db34018c052df47cd549597c29ad2e2300a4747bd572c96888dfbedf0c76f1fa367b97dc0c7d6f714855b08ffe09bcf8c5fdf1e020c70bb0e05c6d65b3c707f63394169638de4ac7cfd2641ae82a082aeb0fe6a7125174ae14e882977525fcb03ab12c37a5a9eef26d21e5b5e72760679b68e6bd5f286554563710a106e95bfdee8691a49bd0dbe3f534e3d46c632a1c9c67ab148f50500de02a8d511a797a73c86bcedc168546e05d914114f3b573ed5e2fe42013ecb9fbd52101f7a306c6934ae9afc324418cf034077980e2b78e28519685c11f16d95375a8819f24dad3977fe239359aa022cec62247ca77e3c4cda8b4cd4f6d1918b42f71b6f24fab19c246b8ee973ef2f0ab7d227f9b5bd95ecbacef454cdb2b7a736c570d477e257db4a7231b4a2364b16b6b22321b5f48ad22a37bc74cc26ff77a603927cdd465c8b672c5e72b017cfeb33724cdd3cfe3ec794283fb0bcdb5a6ab086573f28a22d7de8b650791bf43125bc1144301272b565cd0ffac07a4d1e53ef024f537b172f8c940ec4a8155eb91a15750601d8ef2fb8fe4463f560118ab3d2ff665a9ea1232ef8cb2f56e79af2a5a97174bfd7b6a6cedb9570a24b22459a193e69387bfa4c06b5724c8d892ba58a4eddc4936bcfe5ea2cfd6912859a0e3fbaa31a47e1b6f7ccf24243e9f3a225a0ffbb7ecd00f0738bfe3ea72cf7c31fdd7c94e4c68ea244150ceb21f1e41616b3e079f2c51b14220cb7db30c34053c62fc220b86f15bb53591dfd778e9aa033210626150a8c286a0de05b0f62df6ec1ef15ec2a0ce81e7c57ee238de168e4df8fb8ebd56a73311a64bbda388779f55ba0e78c3b841fa727554d5e4c05fb469bd6131076a21e37729e139b1d67d3a55b35b488ab0b86808912f6ebf99a58e18737f3c9c2c66184d1f58cb8360a19803c5b35a5f4248286809a0e8d9c6f57062a9f3f070fb20b35ba99c3c5ead0900a2632d02abc20c97dbc358d4eeb3572ebcfa0a654c2a4403612a0d4965fedd3dac8fe6f2d33a6954f3e6a9a26bf0170b8ac4dddc8a19e4837aa996f75b42f5eacfa0ca574e306e12d4832b951bec7d3314491d52050208ff756c076978fb6d967e2684523b215ff90eeb3f9a8457c7bfb904f8b87636e2e6de81f6869ea92be344789bc819a955ce4db3f5217cab5b0eacfc2845a0b7dc72867faf111ffb79ec6c3086676ffa65d84ef2032968d697456b07b6936af03edc02b5d9f3556a389d01eb25ed3ad75dafc5d13ef8f79e39a2b60f9f88e4132532eeddbc6e1e0f02da041a5a56fa8694858f500a604c281a952747a10ae3750d842bc4122a114c50334e27bb5b61edb366751a8d08e78594bd90e4567d5845af41f3adaf3ef1d0c194935d272964f60211f4d82b9dd733eea56051e5c459646c5817c9679dbf93d594e01c0bd94df1b6e563a28e2e90cbeeb02493dab7d3951f47a5fa459ab681ac984177230db9a55a1d0771aff59a4874a3001c92273563880487cfca3b32698a2b16a5ce1a631ffb7cb4beff8cfb214288e1a2ac21037feb73f60cf5b0028e236087f85bdcc550434225e7c0860eecd558b91f1237ee7e2f1845895360f774b434928f2114d180ea3e60ad0bf92051856be809f994a61c21d65a96ddea54a051eeea81a56b92816c5cc4a001af878970b287ad55dfe02392027d074cf4532c3422b129e595345ff5a81a9034c38007871f4f4468efe802ab6ad7e2f4b06f9163806b30eab48b0b483c693df93d03e31291f1ba3fec50b03b1dae437b45b5119be8aa2f6f39a89c418d6780a78aee45195a0b12bf4ea5434fb65adfa74a0c39a6df9da841a078a88d84f482c342eac1367296011a94b0dd7ecb32f22a443581a0afeab43071de512bf390f11c89546ba91036721ba553b2491cbc053e4a5c11bd09247d5eb5c9bea8bf46cb61d6d8a21b47c4800ec930063f253b3ba9a39303be78a0bb6c6b8015077fa83638c94ad2f0dcb4e7899de8d85ff3e0b7db62c65832c49c5ba9bbe07e8dab400cf14279b5df7dcb9e5aaa58d1330ed72490264ff7b8b1b4a37d7ad4a3e0d96ed112b1cd9dff2fe94e82c7123bb5a4b6d9e289535c757429b26b94614b034ff29ac72677131cd442566d41ca58d3edc65cc7dd2cae2ade75fcecea9c79fe0fdbc1a4420e8f16f5b9d3f0cec7f156bdf9482bf36a816a4559a39f082441f0ae2789c899b0de0710e4080af5b1a3ee3908d14a5f3f7241559d6bb306aa26ca5733dbdf2c9c8e5b72f0220ae6b07347b02cf03bbd40df1d5ba81ee36792ea2bc7a724c837fcd3daa9d668e129fd94d08159ff2e17e545274e0c87d1b0a9239840f6f2b4c02017b67b4a05d92c0e46a2bc3fc5b69c2798a058135d59593e2b37b401dbcc7bb553189e87c611a48fe157a5e9b28ad21ae44dcf1192b92cb903b839e45d85bfdf3a66b378dc112b06e4e9ecaa8c834aa176955e04abf78b7689986d2e75b56eb77bd69cb52a1387d5bdf04a8e5dc6986dcf651af5482f124f6db96b599fb2fe3a507969aae9a1fc4edb396776e19f6bbe229bc5ea14cf318b66f92b6f5a46c07159b8aa7449123f025c41b19f52d58bdb0d44206779b4c0c9fe4809eae88bf167107fd08d0d4a3a7c1ae707fcb1a37d69929488f17eec413ae1afa13b4a0cd7f9f143211acc1c580f6e60e8682d8f551c0bc4875a21ec41c7f9151ed62060c466ba6c381b0c77197379484a28c66ec1b43ea7ce09bf90d5f0055b7628ae2b9f0a5028d1c9f549fed73f9fe1bc4b90e53f2c23366688491823bcc2651a223fa7ba203ddd04e9c326e21d94dbf4e55b1a0a7654a4fe16b6aaedb6a358eff09be2ed64f3ae1654e72f6105260f29c4b69f009197fc1183ba56a0f005a0d519b178ebd5bde3a3093b9cfb544be082e84af647acda0fb9d0d296560d2cd8f9ed9131ac46fb27e459bd4b6a1db7f9a1b5225f610425415db1257d5e8ae5cd0e78a910245bbdef651edb04a0ee2f9b6b1cdd7802f7615c299c1f6463ad22829ef986979ce090bf1163ad81e3a43e7bc0aa29aa9fa4f005c20d894850367b157c4fe57b03c7518ccc5f2365cff3f632f7d31cdef0d8504c8120271800750fca2bae72fbb201c31b4810ba70f636b7d8233e4dafede33502c5731c2ccdd1bfc94007ef1b477976be4464e6e0d825707e119a313e36f9e0b560fc7f1402c7bdde77f227c521a40fa94c8393b8f75c3d13f69b58772499b64f436aa13efef2f6caf397348f8597a9f207861066752dccdbd67032a70564a898ce74639e01f535f37671bcdaa1222f741b26191896ef230a7846a5e263d2267cbb1ac4ce7f3eb54c6450b7413de3c4ec6f6048a92c79d08d5c6b7380d806d068254378b215716268f2bc21db9e322f816a272a9623e89be5ae3f0473083b9506281e03998dbc051bb16b4a4ca8cd4824ba4aa31b2691b63f9c5c3b88369de899cac36f0b730227005092c03753f9619a7a440d0f5ff20009fe82a60ef260b44b5f72f4168657350116759848766f983c1736340884cdf3aa70fbbc3068eb38b42f35cd847edf047e22fb04e529222fd36715874a4c87fb920d13b921054aff561434bb0112acbc1500080b9400c53fb9cbed1433066ee12088c2b53a8c87f92333f49a9a18e73875f8311cb95e73a38e8e315680b96a2af45b3ffd230098c6bfbe06c3635dd8a63b34eb9396b1cf951b108e8f939f8832fdbed1825f5d56b71c8fdb5d5f65fb755f0376dc1578524a5c5f918e04e93d94d1862c52dccbc1a5d27bdb626d09ae126106103df04ca5c9c07590cdae17a4e5b0a998129cb8c5bfae9e1c7d8063b68a25420f6e7bef88c493f1326e40b9e09897ed4bfb8a73fcaf8c539fc15c5aa8f138301b977d99cc7d74a4ede032fcb5de76d9a678ed6aabdb721b0aad238445a709c69d8e815d5ba0b2a0633198dd889f1d88b24952b2414ee5af8273454deb2037e804f8393b0a6d6094fdaba27d8a834d7ffca25f4dd265e13e3c9c6b735c8a833c1172d16b05637c2a621b4182e61799e9d13d44f6b9e8b7342cb5a6715f1f1ccb947d732253615dde7441c1f3d2233af02f5a677e84833b7338e4a34c3dafbd036392c0be0def36b61f0003ef6b07ec22703ee8529e48bebbbfab898242f1b185537ce1ee4f433b72d351f186601d57de32ee380060175587a4039c8b5bd8a43ce17bdd853545768891cfec19964296bd0656a0e5e75865692cdc464c59574c21dca041b8ede31ec023bee79bcbbef647e144a94ac86ce641e854dd69bd9f3812f26f38850ad9ed5e79b6af66cdf102eab397bbbe4867c773cb67760418bbff0769290836b5744f70fd6fe2fcbf688ba7b63b300a3059b3c02d17db5f33c3cccd464123f4f721f2e9925a66f371cef2f02d38a4be428a3d3cef292ad4fcb279e1f1ca41d774487f965af980be878306a1bb85708200b6246e81805bf7d28779b40e2a835289c653401624f635be247161716ba11e72c3d6bd682a77df53a6fe7f30510268db05d0e994af47fa4da1446c94aad1d692586c97bfc41875ba6332083c3e63f60a9529426e34505e5322fe48cd01c253b4a51ed92e08d42dad66d61cf279686c99673f1149b2b2d6e1a71f746564f57e7e0e0ab5fc20ad2ea753aa7584d15582dfca126311ff2be4d44513f0b242e8feab5d9c586307863cb1b53dd97cb76a576de1ecff6bd3205cba12dd59517fa6738ca76b8cdeedfd69e9496742b3cf371c3fbfe04e52d5a2d33a9027260117b1f1a7326a03e454c50542679860091e81fb7ef0eec5aa6365cfccd84e59498f1f25594b84bee7237ff914c5f3b7ef550279ba78e3bbc6ba2c4a8dabe0d40203c5b14ed7bbad9c07bda3656bf3131c521bf5bd799999195862622c43fa8adecd67f807c0e4b9291bbdd844bddbb4721e550fbd00bf553285dd5fcb1ba32dbcd58668364a8c4fe1281255dc55ed31688ebd34a88d6c4a94fa5c6d051c589bd0ab7e8223ab261399477e98526bd16ee87c6e137fb11690f8e371148261f48765901796909fc764839b3b159bad649c07d41d6df86cd3104a213994883f668e48175918281ba1839fb27ae3bb0ac3ea6b8e3771282127a7acd100896ac2c11d71cc7d1b5512f89b9b24f51f62e9a3956fd2cb031276cf68c707eaf13c7a9d444ee44cc16fd143899c8666a8217107983c222ca23e2622bb29e8fff51e2c6b21b6e3a754e1e021cbe1f93cfaeef961b3815542bf4a2a70cba8b2bd86d799e170c28c535ce7b48b3e47de512d606ce53f74ca6a73135a854ecd2fd1154a5190636e270a45e4a9f9d0c1e6aba7f98c59922cc334dcbbf8329ecf19be8de39206fd55bd1a60f4e8752fa1ca0072d9cb75d60ba39a7156895281b4bbd21124ee7b8e45d159aff03fb439630a4e823a893dcafdef43101cda883bff5a276e24a654b8509a0f82524285775c320f17824e82eeda0d2cb41afc9b0eef088575c3bf1747993447cc070dc9b6cbfc46c71966e04738e278badf5f29b3c1f4ced072f73175a57ec952f1aca93cd3fa56be5753170df0ddbf40d888fd4ee2baaa4c5d0925f5a2507ad8366721e0f5a69b75b0dd0a08db3f6dbbf819613a3a95f97cc22484a54dae64b221fe30c4e3b8fa96e1457e95b70c301cf11ebf6136fb620a317abb2379e5d56d0d88b24de07491055787eac5494c3a5fdc585ae10495548b70f49cf8f7c3d4ad36293dba488f95de8c9b6349f01ac654c45266bfc236bcd943ac067f5b1407cc4443c27f10ac657597aeb01097af6d562b6dd83088dee8194f5e875b61e70fc1997ac5cc2d69b21932b21279994bba69ed214eabfd54feb65214c01ef9d2ceff775bc59a001ef51f67b69e725525831a59d1b091aa76a8c208f596978fa96294b2e39c51ae549bb6672478b937187a125b9ff2213b9674fe1b0d9a611cf7f723b3aa8b2e4babb0096178349ce5a77cfba1db0ad504ae5d9562fc192cfa8493cd87633853f8fc1d75b64ddf010b750fd6c2b56ad863d74482abc3dffe57fea8fc9fc00f400cf34acb9c9bc4a17f379d00aeac2ef76338fe6ce9183f06ff4d79cb93beb2311884f239eb772bbfbc407f3c670f41c43898f6e3bf4b2b8f82282846f2c9b8a55ca8e61272313e67e5c4771ab4c5510e675dc39a16a0e2fc9c277414d43b62a9ad88ac04de039f45cb69d81a0b4b0446ce6a5ad5595214ebdb7fa4e0831ba7a050ac3b9723bee004f13585e9d8fe23a30a495e179c4a2f4554a18007eb00eef78a534d42f3e4c760628e304dd47543fffe13b1362ddce5599422859e4d9f892b735a68f54e5601749fca92ff91a0a9c8856dfd51f8d2c592d32130e59e86ec03a086fb430048b1f8a68859294146012379f96f26dfc30f0dece361841460079531397e9ef03be94c238433f7040bca567976f41058290ec0d3591f8c51aad75ef2680729cf61d124b41558a8d77fdc255f479f3c2042cf7f602e1c5c5efb589679027ca81ff822282ce87649cb8984fc1e988e1b81f05092573d0c5666d36a7d48386b6d25ded53ddcc9d8b9fc43d9fc589bf56b9f3119f31a923bc587ce38f3bb2c29df44b34e8dd36f92cfe6301a9f01220c86008778c0061fab79a6f905ea768af6c2df5b55989fcfe3f39bb50b76bca772c3773b22487ae8cf297ea4a2a631580393d57ad47e518bdc3433615167e9bf37421bb0ab0754c4296af22de78736f5cfc417e13548410dcd4c08895ebeb72ff996564320ce30f14d6feeb67c0d51c63e3af3097a7a72bc72afbd247c3dda8dc22bc9d29a96b9d84cde288a27054ebc88e351666e1983b2309aaf4dbd55e62c944142b1fadeae675dc52113a5b5ebdd8ca2c4a03cfc26abf883059b14176cbf4d4ea285a21ac29d491ec22a422923b9c50400ff5e6c002dab9735c4c2f77361b37eb8667685c136760d4ba26f5a255e9b2834234c242a47b8853f5a59f47bdb0703c2f1395cc3725d805b762005531c46e7f0144c3f8269d8abb49dba7dd005fbe14c6ecbf343321078f0c9ea092a476ea65f6b11aaa22083809f1d24851330748ecb3cabc934eacee9f5d59bac57bf636f6403688e276f48b8e8a9ad5f26eb07058b8b31c44cd2cee0be57ac2aa8a0b9e5960c90f67dd3cbf90fdeb4000b84a9eb07262f845a8d095b3d746c2417dfda59dc31a4f20bf23d1db89e390bb60edf6512556abb33f5b4892be6492beeb813869742e63e5290199756e27b26a16498f917120b3126ca10dd6e5c35697d104ad03c07cd0bc38c4cdd5010f4741e7464280b73b00f38df5a44e05590378aad91e8d83ddda5d28654e9be66366dda62e68873a93284fae62f26862e6f6daf4dd7120e76cf64f53fc9eb41442ad34321fc447e743e9f66902cbf5e5e46016a1beacf0fb5aab58a81e2bd708c1630640d4d7e25d5</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">Hey, password is required here.</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css"></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>Author: </span><span class="post-copyright-info"><a href="https://haehansa.github.io">胡蝶 しのぶ</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>Link: </span><span class="post-copyright-info"><a href="https://haehansa.github.io/posts/870d0507/">https://haehansa.github.io/posts/870d0507/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>Copyright Notice: </span><span class="post-copyright-info">All articles on this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless otherwise stated.</span></div></div><div class="tag_share"></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/posts/1054bcc4/" title="Common Vulnerabilities and Exposures"><img class="cover" src="/posts/1054bcc4/cve.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">Previous</div><div class="info-item-2">Common Vulnerabilities and Exposures</div></div><div class="info-2"><div class="info-item-1">Nothing to show here.</div></div></div></a><a class="pagination-related" href="/posts/83ba8aef/" title="RAT"><img class="cover" src="/imgs/im.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">Next</div><div class="info-item-2">RAT</div></div><div class="info-2"><div class="info-item-1">Nothing to show here.</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/imgs/butterfly-icon.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">胡蝶 しのぶ</div><div class="author-info-description"></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/haehansa"><i class="fab fa-github"></i><span>でフォローしてください</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>「精巧な殺人の技術」</span></div><div class="announcement_content">「首を切られていないからといって、自分が危害から安全だと思わないでください。私のように剣術に毒を使う者もいます。」</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Contents</span><span class="toc-percentage"></span></div><div class="toc-content toc-div-class" style="display:none"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Tactics"><span class="toc-number">1.</span> <span class="toc-text">Tactics</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Techniques"><span class="toc-number">1.1.</span> <span class="toc-text">Techniques</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最近の投稿</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/posts/411e9c1c/" title="Adversary Simulation"><img src="/imgs/im.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Adversary Simulation"/></a><div class="content"><a class="title" href="/posts/411e9c1c/" title="Adversary Simulation">Adversary Simulation</a><time datetime="2026-03-18T02:48:10.000Z" title="Created 2026-03-18 09:48:10">2026-03-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/2a6a3ff1/" title="APT &amp; Malware Campaign Breakdown"><img src="/imgs/im.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="APT &amp; Malware Campaign Breakdown"/></a><div class="content"><a class="title" href="/posts/2a6a3ff1/" title="APT &amp; Malware Campaign Breakdown">APT &amp; Malware Campaign Breakdown</a><time datetime="2026-03-15T04:36:45.000Z" title="Created 2026-03-15 11:36:45">2026-03-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/83ba8aef/" title="RAT"><img src="/imgs/im.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="RAT"/></a><div class="content"><a class="title" href="/posts/83ba8aef/" title="RAT">RAT</a><time datetime="2025-05-19T15:27:54.000Z" title="Created 2025-05-19 22:27:54">2025-05-19</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/870d0507/" title="MITRE | ATT&amp;CK"><img src="/imgs/im.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="MITRE | ATT&amp;CK"/></a><div class="content"><a class="title" href="/posts/870d0507/" title="MITRE | ATT&amp;CK">MITRE | ATT&amp;CK</a><time datetime="2025-05-17T19:29:56.000Z" title="Created 2025-05-18 02:29:56">2025-05-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/1054bcc4/" title="Common Vulnerabilities and Exposures"><img src="/posts/1054bcc4/cve.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Common Vulnerabilities and Exposures"/></a><div class="content"><a class="title" href="/posts/1054bcc4/" title="Common Vulnerabilities and Exposures">Common Vulnerabilities and Exposures</a><time datetime="2025-02-07T22:28:56.000Z" title="Created 2025-02-08 05:28:56">2025-02-08</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2019 - 2026 By 胡蝶 しのぶ</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a><div>
+<i class="fas fa-heart faa-float animated" style="color:red"></i>
+<span id="timeDate">载入天数...</span>
+<span id="times">载入时分秒...</span></div></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Reading Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Toggle Between Light and Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle Between Single-column and Double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="Settings"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back to Top"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><div class="js-pjax"><script>(() => {
+  const runMermaid = ele => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    ele.forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const mermaidThemeConfig = `%%{init:{ 'theme':'${theme}'}}%%\n`
+      const mermaidID = `mermaid-${index}`
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+      const renderMermaid = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      // mermaid v9 and v10 compatibility
+      typeof renderFn === 'string' ? renderMermaid(renderFn) : renderFn.then(({ svg }) => renderMermaid(svg))
+    })
+  }
+
+  const codeToMermaid = () => {
+    const codeMermaidEle = document.querySelectorAll('pre > code.mermaid')
+    if (codeMermaidEle.length === 0) return
+
+    codeMermaidEle.forEach(ele => {
+      const preEle = document.createElement('pre')
+      preEle.className = 'mermaid-src'
+      preEle.hidden = true
+      preEle.textContent = ele.textContent
+      const newEle = document.createElement('div')
+      newEle.className = 'mermaid-wrap'
+      newEle.appendChild(preEle)
+      ele.parentNode.replaceWith(newEle)
+    })
+  }
+
+  const loadMermaid = () => {
+    if (false) codeToMermaid()
+    const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+    if ($mermaid.length === 0) return
+
+    const runMermaidFn = () => runMermaid($mermaid)
+    btf.addGlobalFn('themeChange', runMermaidFn, 'mermaid')
+    window.loadMermaid ? runMermaidFn() : btf.getScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(runMermaidFn)
+  }
+
+  btf.addGlobalFn('encrypt', loadMermaid, 'mermaid')
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script><script>(() => {
+  const abcjsInit = () => {
+    const abcjsFn = () => setTimeout(() => {
+      document.querySelectorAll(".abc-music-sheet").forEach(ele => {
+        if (ele.children.length > 0) return
+        ABCJS.renderAbc(ele, ele.innerHTML, {responsive: 'resize'})
+      })
+    }, 100)
+    
+    typeof ABCJS === 'object' ? abcjsFn()
+      : btf.getScript('https://cdn.jsdelivr.net/npm/abcjs/dist/abcjs-basic-min.min.js').then(abcjsFn)
+  }
+
+  window.pjax ? abcjsInit() : window.addEventListener('load', abcjsInit)
+  btf.addGlobalFn('encrypt', abcjsInit, 'abcjs')
+})()</script></div><script src="/js/custom/DotCursor.js"></script><script src="/js/custom/custom.js"></script><script src="/js/custom/bubble.js"></script><script src="/js/custom/inFootTime.js"></script><script src="/js/custom/music.js"></script><script src="/js/custom/aplayer.js"></script><script src="/js/load-aplayer.js"></script><script src="/js/custom/cursor-effects.js"></script><div class="music-dropdown" onclick="toggleDropdown()"> <i class="fas fa-music"></i><div class="dropdown-content" id="dropdownContent"> <div data-player="japan_collection">心を打つ日本のメロディー</div> <div data-player="another_collection">心に響くメロディー</div> </div> </div><script id="canvas_nest" defer="defer" color="187,134,252" opacity="1" zIndex="-1" count="99" mobile="false" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-nest.min.js"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script>(() => {
+  const destroyAplayer = () => {
+    if (window.aplayers) {
+      for (let i = 0; i < window.aplayers.length; i++) {
+        if (!window.aplayers[i].options.fixed) {
+          window.aplayers[i].destroy()
+        }
+      }
+    }
+  }
+
+  const runMetingJS = () => {
+    typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+  }
+
+  btf.addGlobalFn('pjaxSend', destroyAplayer, 'destroyAplayer')
+  btf.addGlobalFn('pjaxComplete', loadMeting, 'runMetingJS')
+})()</script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>(() => {
+  const pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+  window.pjax = new Pjax({
+    elements: 'a:not([target="_blank"])',
+    selectors: pjaxSelectors,
+    cacheBust: false,
+    analytics: false,
+    scrollRestoration: false
+  })
+
+  const triggerPjaxFn = (val) => {
+    if (!val) return
+    Object.values(val).forEach(fn => fn())
+  }
+
+  document.addEventListener('pjax:send', () => {
+    // removeEventListener
+    btf.removeGlobalFnEvent('pjaxSendOnce')
+    btf.removeGlobalFnEvent('themeChange')
+
+    // reset readmode
+    const $bodyClassList = document.body.classList
+    if ($bodyClassList.contains('read-mode')) $bodyClassList.remove('read-mode')
+
+    triggerPjaxFn(window.globalFn.pjaxSend)
+  })
+
+  document.addEventListener('pjax:complete', () => {
+    btf.removeGlobalFnEvent('pjaxCompleteOnce')
+    document.querySelectorAll('script[data-pjax]').forEach(item => {
+      const newScript = document.createElement('script')
+      const content = item.text || item.textContent || item.innerHTML || ""
+      Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+      newScript.appendChild(document.createTextNode(content))
+      item.parentNode.replaceChild(newScript, item)
+    })
+
+    triggerPjaxFn(window.globalFn.pjaxComplete)
+  })
+
+  document.addEventListener('pjax:error', e => {
+    if (e.request.status === 404) {
+      pjax.loadUrl('/404.html')
+    }
+  })
+})()</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">検索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  Loading Database</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="投稿を検索" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"right","width":150,"height":300,"hOffset":15,"vOffset":-20},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>

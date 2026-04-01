@@ -1,0 +1,321 @@
+
+.aplayer {
+    background: rgba(255, 255, 255, 0.6) !important;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.07), 0 1px 5px 0 rgba(0, 0, 0, 0.1);
+    position: relative;
+  }
+  
+  .aplayer.aplayer-fixed .aplayer-lrc:after,
+  .aplayer.aplayer-fixed .aplayer-lrc:before {
+    display: none;
+  }
+  
+  .aplayer.aplayer.aplayer-fixed .aplayer-body {
+    background: rgba(255, 255, 255, 0.6) !important;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.07), 0 1px 5px 0 rgba(0, 0, 0, 0.1);
+    position: fixed;
+  }
+  
+
+  .aplayer .aplayer-list ol::-webkit-scrollbar {
+    width: 5px;
+    
+  }
+  
+  .aplayer .aplayer-list ol::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    background-color: var(--theme-color) !important;
+    
+  }
+  
+  .aplayer .aplayer-list ol::-webkit-scrollbar-thumb:hover {
+    background-color: var(--theme-color) !important;
+  }
+  
+
+  .aplayer.aplayer-fixed .aplayer-list {
+    border-radius: 6px 6px 0 0 !important;
+  }
+  
+  .aplayer.aplayer-fixed .aplayer-miniswitcher {
+    border-radius: 0 6px 6px 0 !important;
+  }
+  
+  .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+    transition: 0.28s !important;
+    border-radius: 6px !important;
+  }
+  
+  .aplayer .aplayer-list ol li:hover {
+    background: var(--theme-color) !important;
+  }
+  
+  .aplayer .aplayer-list ol li.aplayer-list-light {
+    background: var(--theme-color) !important;
+  }
+
+  .aplayer-lrc p {
+    color: #ffffff !important;
+    text-shadow: #000000 1px 0 0, #000000 0 1px 0, #000000 -1px 0 0, #000000
+        0 -1px 0 !important;
+    
+  }
+  
+
+  [data-theme="dark"] .aplayer {
+    background: rgba(22, 22, 22, 0.6) !important;
+    color: rgb(255, 255, 255);
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.07), 0 1px 5px 0 rgba(0, 0, 0, 0.1);
+  }
+  
+  [data-theme="dark"] .aplayer.aplayer-fixed .aplayer-body {
+    background: rgba(22, 22, 22, 0.6) !important;
+    color: rgb(255, 255, 255);
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.07), 0 1px 5px 0 rgba(0, 0, 0, 0.1);
+  }
+  
+  [data-theme="dark"]
+    .aplayer
+    .aplayer-info
+    .aplayer-controller
+    .aplayer-time
+    .aplayer-icon
+    path {
+    fill: #d4d4d4;
+  }
+  
+  [data-theme="dark"] .aplayer .aplayer-list ol li:hover {
+    background: var(--theme-color) !important;
+  }
+  
+  [data-theme="dark"] .aplayer .aplayer-list ol li.aplayer-list-light {
+    background: var(--theme-color) !important;
+  }
+  
+  [data-theme="dark"] .aplayer .aplayer-info .aplayer-controller .aplayer-time {
+    color: #d4d4d4;
+  }
+  
+  [data-theme="dark"] .aplayer .aplayer-list ol li .aplayer-list-index {
+    color: #d4d4d4;
+  }
+  
+  [data-theme="dark"] .aplayer .aplayer-list ol li .aplayer-list-author {
+    color: #d4d4d4;
+  }
+
+/* Width的值可根据喜好调整（屏幕的宽度） */
+@media (max-width: 960px) {
+    /* Aplayer音乐标签伸缩 */
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+      left: -66px !important;
+      /* 默认情况下缩进左侧66px，只留一点箭头部分 */
+    }
+  
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+      left: 0 !important;
+      /* 鼠标悬停是左侧缩进归零，完全显示按钮 */
+    }
+  }
+
+  /* .aplayer .aplayer-miniswitcher{
+    background: #bb86fc !important;
+  } */
+  #tabs_aplayer_jp_an {
+    display: flex;
+    pointer-events: auto;
+    z-index: 1000; 
+    font-size: 8px;
+    position: fixed;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    /* overflow: hidden;  */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Đổ bóng cho tab */
+    bottom: 0px;
+    
+   
+}
+
+/* [data-theme="dark"] #tabs_aplayer_jp_an {
+  color: black;
+  background: #bb86fc;
+} */
+
+.tab_music_jp_aplayer {
+    padding: 4px 8px;
+    cursor: pointer;
+    transition: background-color 0.3s; /* Hiệu ứng chuyển màu */
+}
+
+.tab_music_jp_aplayer:hover {
+    background-color: #e0e0e0; /* Màu nền khi hover */
+}
+
+.tab_music_an_aplayer {
+  padding: 4px 8px;
+  cursor: pointer;
+  transition: background-color 0.3s; /* Hiệu ứng chuyển màu */
+}
+
+.tab_music_an_aplayer:hover {
+  background-color: #e0e0e0; /* Màu nền khi hover */
+}
+
+.tab_music_an_aplayer.active {
+  background-color: #100d12; /* Màu nền cho tab đang hoạt động */
+  font-weight: bold; /* Làm đậm tab đang hoạt động */
+  color: #bb86fc
+}
+
+.tab_music_jp_aplayer.active {
+  background-color: #100d12; /* Màu nền cho tab đang hoạt động */
+  font-weight: bold; /* Làm đậm tab đang hoạt động */
+  color: #bb86fc
+}
+
+[data-theme="dark"] .tab_music_jp_aplayer.active {
+  background-color: #100d12; /* Màu nền cho tab đang hoạt động */
+  font-weight: bold; /* Làm đậm tab đang hoạt động */
+  color: #bb86fc
+}
+
+[data-theme="dark"] .tab_music_an_aplayer.active {
+  background-color: #100d12; /* Màu nền cho tab đang hoạt động */
+  font-weight: bold; /* Làm đậm tab đang hoạt động */
+  color: #bb86fc
+}
+
+[data-theme="dark"] 
+.tab_music_an_aplayer {
+  background: #100d12;
+}
+
+[data-theme="dark"] 
+.tab_music_jp_aplayer {
+  background: #100d12;
+}
+
+
+
+#menu_player {
+
+  bottom: 200px;
+
+  cursor: pointer;
+  z-index: 2000; 
+}
+
+.music-dropdown {
+  display: inline-block;
+  position: fixed;
+  cursor: pointer;
+  border-radius: 5px;
+  right: 10px;
+  bottom: 42px;
+  z-index: 10000;
+  background-color: var(--btn-bg);
+  color: var(--btn-color);
+  padding: 5px 10px;
+}
+
+.dropdown-content {
+  display: none;
+  bottom: 170px;
+  right: 40px;
+  position: absolute;
+  background-color: #fff;
+  min-width: 200px;
+  /* border: 1px solid #ccc; */
+  border-radius: 5px;
+  z-index: 1;
+  color: #1f2d3d;
+  opacity: 0; /* Bắt đầu với độ mờ 0 */
+  transform: translateX(100%); /* Bắt đầu từ bên phải */
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.dropdown-content div {
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.dropdown-content div:hover {
+  background-color: #e0e0e0;
+  border-radius: 5px;
+}
+
+#albumDetails {
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+[data-theme="dark"] 
+.music-dropdown {
+  background-color: var(--btn-bg);
+  color: var(--btn-color);
+}
+
+[data-theme="dark"] 
+.dropdown-content {
+  background: var(--card-bg);
+  color: var(--font-color);
+}
+
+[data-theme="dark"] 
+.dropdown-content div:hover {
+  background-color: #bb86fc;
+  color: var(--font-color);
+}
+
+.dropdown-content.show {
+  display: block; /* Hiện menu */
+  opacity: 1; /* Độ mờ 1 khi hiện */
+  transform: translateX(0); /* Trở về vị trí ban đầu */
+}
+
+[data-theme="dark"] 
+.aplayer.aplayer-fixed .aplayer-miniswitcher{
+  background: var(--font-color);
+}
+
+
+
+
+/* 
+#menu_player {
+  position: fixed;
+  bottom: 200px;
+
+  font-size: 24px;
+  cursor: pointer; 
+  z-index: 2000; 
+}
+
+
+#albums {
+  position: fixed;
+  bottom: 50px;
+  left: 20px;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  display: none; 
+  z-index: 1000; 
+}
+
+.album {
+  padding: 5px;
+  cursor: pointer; 
+}
+.album:hover {
+  background-color: #f0f0f0;
+}
+
+.hidden {
+  display: none !important; 
+} */

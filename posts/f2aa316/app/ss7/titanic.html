@@ -1,0 +1,180 @@
+<hr>
+<p>title: Titanic<br>abbrlink: 7b5a59b<br>date: 2025-02-15 18:06:44<br>tags: CVE-2024-41817<br>categories:</p>
+<ul>
+<li>[HackTheBox, Vice]<br>hidden: true<br>password: a@#@!dCVVEWETR543119</li>
+</ul>
+<hr>
+<p>{% note purple ‘fas fa-bullhorn’ %}<br>📌 <font color=#bb86fc size=3 face=" "><strong>Overview</strong></font>:</p>
+<table>
+<thead>
+<tr>
+<th align="center">📑 <strong>Release Date</strong></th>
+<th align="center">📑 <strong>Retire Date</strong></th>
+<th align="center">📖 <strong>Rated Difficulty</strong></th>
+<th align="center">⚡️ <strong>Operating Systems</strong></th>
+<th align="center">⚡️ <strong>Created by</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">15 Feb 2025</td>
+<td align="center"></td>
+<td align="center">Easy</td>
+<td align="center">Linux</td>
+<td align="center"><a href="https://app.hackthebox.com/users/1253217">ruycr4ft</a></td>
+</tr>
+</tbody></table>
+<p>⚔️ Accessing the room at <a href="https://app.hackthebox.com/machines/645">https://app.hackthebox.com/machines/645</a></p>
+<p>{% endnote %}</p>
+<h1 id="Challenge-brief"><a href="#Challenge-brief" class="headerlink" title="Challenge brief"></a><strong>Challenge brief</strong></h1><p>This box’s</p>
+<h2 id="What-we-learned"><a href="#What-we-learned" class="headerlink" title="What we learned?"></a><strong>What we learned?</strong></h2><hr>
+<h1 id="Walkthrough-solutions"><a href="#Walkthrough-solutions" class="headerlink" title="Walkthrough &amp; solutions"></a><strong>Walkthrough &amp; solutions</strong></h1><h2 id="Recon"><a href="#Recon" class="headerlink" title="Recon"></a>Recon</h2><p>With nmap, we have:</p>
+<pre><code class="language-shell">PORT   STATE SERVICE VERSION
+22/tcp open  ssh     OpenSSH 8.9p1 Ubuntu 3ubuntu0.10 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   256 73:03:9c:76:eb:04:f1:fe:c9:e9:80:44:9c:7f:13:46 (ECDSA)
+|_  256 d5:bd:1d:5e:9a:86:1c:eb:88:63:4d:5f:88:4b:7e:04 (ED25519)
+80/tcp open  http    Apache httpd 2.4.52
+| http-server-header: 
+|   Apache/2.4.52 (Ubuntu)
+|_  Werkzeug/3.0.3 Python/3.10.12
+|_http-title: Titanic - Book Your Ship Trip
+</code></pre>
+<p>inline footnote ^[footnote text]</p>
+<p>With subdomain finder tool, we have:</p>
+<pre><code class="language-shell">└─# wfuzz -c -f sub-fighter -w /usr/share/seclists/Discovery/DNS/subdomains-top1million-5000.txt -u &#39;http://titanic.htb&#39; -H &quot;Host: FUZZ.titanic.htb&quot; --hw 290
+000000019:   200        275 L    1278 W     13870 Ch    &quot;dev&quot;
+</code></pre>
+<p><img src="/posts/7b5a59b/image-1.png" alt="This image depicting downloaded ticket file"></p>
+<p>So, we can accept to the website: <a href="http://dev.titanic.htb/">http://dev.titanic.htb/</a></p>
+<p><img src="/posts/7b5a59b/image.png" alt="Website http:&#x2F;&#x2F;dev.titanic.htb"></p>
+<p>This is a Gitea website[^1] and we can see two file include: docker-config and flask-app from developer.</p>
+<p><img src="/posts/7b5a59b/image-1.png" alt="alt text"></p>
+<p>Now, let’s look at the source code from the app.py file.</p>
+<p>{% codeblock lang:python mark:36-38,42 %}<br>from flask import Flask, request, jsonify, send_file, render_template, redirect, url_for, Response<br>import os<br>import json<br>from uuid import uuid4</p>
+<p>app &#x3D; Flask(<strong>name</strong>)</p>
+<p>TICKETS_DIR &#x3D; “tickets”</p>
+<p>if not os.path.exists(TICKETS_DIR):<br>    os.makedirs(TICKETS_DIR)</p>
+<p>@app.route(‘&#x2F;‘)<br>def index():<br>    return render_template(‘index.html’)</p>
+<p>@app.route(‘&#x2F;book’, methods&#x3D;[‘POST’])<br>def book_ticket():<br>    data &#x3D; {<br>        “name”: request.form[‘name’],<br>        “email”: request.form[‘email’],<br>        “phone”: request.form[‘phone’],<br>        “date”: request.form[‘date’],<br>        “cabin”: request.form[‘cabin’]<br>    }</p>
+<pre><code>ticket_id = str(uuid4())
+json_filename = f&quot;{ticket_id}.json&quot;
+json_filepath = os.path.join(TICKETS_DIR, json_filename)
+
+with open(json_filepath, &#39;w&#39;) as json_file:
+    json.dump(data, json_file)
+
+return redirect(url_for(&#39;download_ticket&#39;, ticket=json_filename))
+</code></pre>
+<p>@app.route(‘&#x2F;download’, methods&#x3D;[‘GET’])<br>def download_ticket():<br>    ticket &#x3D; request.args.get(‘ticket’)<br>    if not ticket:<br>        return jsonify({“error”: “Ticket parameter is required”}), 400</p>
+<pre><code>json_filepath = os.path.join(TICKETS_DIR, ticket)
+
+if os.path.exists(json_filepath):
+    return send_file(json_filepath, as_attachment=True, download_name=ticket)
+else:
+    return jsonify({&quot;error&quot;: &quot;Ticket not found&quot;}), 404
+</code></pre>
+<p>if <strong>name</strong> &#x3D;&#x3D; ‘<strong>main</strong>‘:<br>    app.run(host&#x3D;’127.0.0.1’, port&#x3D;5000)<br>{% endcodeblock %}</p>
+<p>This code creates a web application that allows users to book tickets by filling out a form. The ticket information is saved as a JSON file in the “tickets” directory, and users can download their tickets after booking.<br>However, there is a vulnerability in line <code>38</code> and line <code>42</code>. The ticket value is not properly validated, allowing hackers to exploit the LFI vulnerability.</p>
+<p>So we can read any system file (provided the current user has read permission) easily.</p>
+<p><img src="/posts/7b5a59b/image-2.png" alt="Read file &#x2F;etc&#x2F;passwd"></p>
+<p>Otherwise, from Gitea documentation[^2], we can investigate the app.ini config at &#x2F;data&#x2F;gitea&#x2F;conf&#x2F;app.ini</p>
+<pre><code>APP_NAME = Gitea: Git with a cup of tea
+RUN_MODE = prod
+RUN_USER = git
+WORK_PATH = /data/gitea
+
+[repository]
+ROOT = /data/git/repositories
+
+[repository.local]
+LOCAL_COPY_PATH = /data/gitea/tmp/local-repo
+
+[repository.upload]
+TEMP_PATH = /data/gitea/uploads
+
+[server]
+APP_DATA_PATH = /data/gitea
+DOMAIN = gitea.titanic.htb
+SSH_DOMAIN = gitea.titanic.htb
+HTTP_PORT = 3000
+ROOT_URL = http://gitea.titanic.htb/
+DISABLE_SSH = false
+SSH_PORT = 22
+SSH_LISTEN_PORT = 22
+LFS_START_SERVER = true
+LFS_JWT_SECRET = OqnUg-uJVK-l7rMN1oaR6oTF348gyr0QtkJt-JpjSO4
+OFFLINE_MODE = true
+
+[database]
+PATH = /data/gitea/gitea.db
+DB_TYPE = sqlite3
+HOST = localhost:3306
+NAME = gitea
+USER = root
+PASSWD = 
+LOG_SQL = false
+SCHEMA = 
+SSL_MODE = disable
+
+[indexer]
+ISSUE_INDEXER_PATH = /data/gitea/indexers/issues.bleve
+
+[session]
+PROVIDER_CONFIG = /data/gitea/sessions
+PROVIDER = file
+
+[picture]
+AVATAR_UPLOAD_PATH = /data/gitea/avatars
+REPOSITORY_AVATAR_UPLOAD_PATH = /data/gitea/repo-avatars
+
+[attachment]
+PATH = /data/gitea/attachments
+
+[log]
+MODE = console
+LEVEL = info
+ROOT_PATH = /data/gitea/log
+
+[security]
+INSTALL_LOCK = true
+SECRET_KEY = 
+REVERSE_PROXY_LIMIT = 1
+REVERSE_PROXY_TRUSTED_PROXIES = *
+INTERNAL_TOKEN = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYmYiOjE3MjI1OTUzMzR9.X4rYDGhkWTZKFfnjgES5r2rFRpu_GXTdQ65456XC0X8
+PASSWORD_HASH_ALGO = pbkdf2
+
+[service]
+DISABLE_REGISTRATION = false
+REQUIRE_SIGNIN_VIEW = false
+REGISTER_EMAIL_CONFIRM = false
+ENABLE_NOTIFY_MAIL = false
+ALLOW_ONLY_EXTERNAL_REGISTRATION = false
+ENABLE_CAPTCHA = false
+DEFAULT_KEEP_EMAIL_PRIVATE = false
+DEFAULT_ALLOW_CREATE_ORGANIZATION = true
+DEFAULT_ENABLE_TIMETRACKING = true
+NO_REPLY_ADDRESS = noreply.localhost
+
+[lfs]
+PATH = /data/git/lfs
+
+[mailer]
+ENABLED = false
+
+[openid]
+ENABLE_OPENID_SIGNIN = true
+ENABLE_OPENID_SIGNUP = true
+
+[cron.update_checker]
+ENABLED = false
+
+[repository.pull-request]
+DEFAULT_MERGE_STYLE = merge
+
+[repository.signing]
+DEFAULT_TRUST_MODEL = committer
+
+[oauth2]
+JWT_SECRET = FIAOKLQX4SBzvZ9eZnHYLTCiVGoBtkE4y5B7vMjzz3g
+</code></pre>
+<p>[^1]: Gitea is a forge software package for hosting software development version control using Git as well as other collaborative features like bug tracking, code review, continuous integration, kanban boar…<br>[^2]: See documentation at <a href="https://docs.gitea.com/next/installation/install-with-docker">https://docs.gitea.com/next/installation/install-with-docker</a></p>

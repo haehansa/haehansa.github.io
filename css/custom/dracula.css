@@ -1,0 +1,144 @@
+/* Newly Added Content
+  ------------------------------------- 
+  --hl-color                  Code box font color [Required] (Copy the color from pre[class*="language-"] below and paste it here)
+  --hl-bg                     Code box background color [Required] (Copy the background from pre[class*="language-"] below and paste it here)
+  --hltools-bg: #321a0f       Code box top toolbar background color [Optional] (You can omit this if you have turned off copy, lang, and shrink)
+  --hltools-color: #fff       Code box top toolbar font color [Optional] (You can omit this if you have turned off copy, lang, and shrink)
+  --hlnumber-bg: #221a0f      Code box line number background color [Optional] (You can omit this if you have turned off line_number)
+  --hlnumber-color: #fff      Code box line number font color [Optional] (You can omit this if you have turned off line_number)
+  --hlscrollbar-bg: #d3af86   Code box scrollbar color [Optional] (Defaults to the main theme color)
+  --hlexpand-bg: #d3af86      Code box bottom expansion background color [Optional] (You can omit this if you have turned off highlight_height_limit)
+*/
+
+:root {
+    --hl-color: #728fcb;
+    --hl-bg: #282a36;
+    --hltools-bg: xxxxxxx;
+    --hltools-color: xxxxxxx;
+    --hlnumber-bg: xxxxxxx;
+    --hlnumber-color: xxxxxxxx;
+    --hlscrollbar-bg: xxxxx;
+    --hlexpand-bg: xxxxxxx
+  }
+ /**
+ * Dracula Theme originally by Zeno Rocha [@zenorocha]
+ * https://draculatheme.com/
+ *
+ * Ported for PrismJS by Albert Vallverdu [@byverdu]
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+	color: #f8f8f2;
+	background: none;
+	text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	line-height: 1.5;
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+	padding: 1em;
+	margin: .5em 0;
+	overflow: auto;
+	border-radius: 0.3em;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	background: #282a36;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+	padding: .1em;
+	border-radius: .3em;
+	white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: #6272a4;
+}
+
+.token.punctuation {
+	color: #f8f8f2;
+}
+
+.namespace {
+	opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.constant,
+.token.symbol,
+.token.deleted {
+	color: #ff79c6;
+}
+
+.token.boolean,
+.token.number {
+	color: #bd93f9;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+	color: #50fa7b;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string,
+.token.variable {
+	color: #f8f8f2;
+}
+
+.token.atrule,
+.token.attr-value,
+.token.function,
+.token.class-name {
+	color: #f1fa8c;
+}
+
+.token.keyword {
+	color: #8be9fd;
+}
+
+.token.regex,
+.token.important {
+	color: #ffb86c;
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+
+.token.italic {
+	font-style: italic;
+}
+
+.token.entity {
+	cursor: help;
+}

